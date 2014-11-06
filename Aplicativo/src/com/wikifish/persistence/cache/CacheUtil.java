@@ -339,7 +339,6 @@ public class CacheUtil {
      * @param height
      * @return
      */
-    @SuppressWarnings("deprecation")
 	public static Bitmap decodeImage(InputStream inputStream, int width, int height) {
         Bitmap bitmap = null;
 

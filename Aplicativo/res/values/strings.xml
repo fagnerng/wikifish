@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">WikiFish</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_about">Help</string>
+   
 
 </resources>

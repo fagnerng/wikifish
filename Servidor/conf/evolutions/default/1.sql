@@ -6,14 +6,14 @@
 create table comment (
   id                        bigint not null,
   fish_id                   bigint not null,
-  name                      varchar(255),
+  userName                      varchar(255),
   comment                   varchar(255),
   constraint pk_comment primary key (id))
 ;
 
 create table fish (
   id                        bigint not null,
-  name                      varchar(255),
+  userName                      varchar(255),
   cientific_name            varchar(255),
   ph                        float,
   dh                        float,
@@ -26,7 +26,7 @@ create table fish (
 
 create table region (
   id                        bigint not null,
-  name                      varchar(255),
+  userName                      varchar(255),
   constraint pk_region primary key (id))
 ;
 

@@ -3,18 +3,20 @@
 # ~~~~
 
 # Home page
-GET         /                                       controllers.Application.index
+GET           /                                       controllers.Application.index
 
 #fish
-GET         /fish                                   controllers.Application.fishs
-GET         /fish/:id                               controllers.Application.getFish(id: long)
-POST        /fish                                   controllers.Application.newFish
-PUT         /fish/:id                               controllers.Application.updateFish(id: long)
+GET           /fish                                   controllers.Application.fishs
+GET           /fish/:id                               controllers.Application.getFish(id: Long)
+POST          /fish                                   controllers.Application.newFish
+PUT           /fish/:id                               controllers.Application.updateFish(id: Long)
+DELETE        /fish/:id                               controllers.Application.deleteFish(id: Long)
 
 #comments
-GET         /fish/:id                               controllers.Application.comments(id: long)
-POST        /fish/:id                               controllers.Application.newComments(id: long)
-PUT         /fish/:fishId/comment/:commentId        controllers.Application.updateComments(id: fishId, commentId: long)
+GET           /fish/:id                               controllers.Application.comments(id: Long)
+POST          /fish/:id                               controllers.Application.newComments(id: Long)
+PUT           /fish/:fishId/comment/:commentId        controllers.Application.updateComments(fishId: Long, commentId: Long)
+DELETE        /fish/:fishId/comment/:commentId        controllers.Application.deleteComment(fishId: Long, commentId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                           controllers.Assets.at(path="/public", file)
+GET           /assets/*file                           controllers.Assets.at(path="/public", file)

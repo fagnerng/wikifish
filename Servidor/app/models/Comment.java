@@ -10,7 +10,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 
 @Entity
 @JsonInclude(NON_EMPTY)
-public class Comment extends Model{
+public class Comment extends Model {
 
     @Id
     private long id;
@@ -18,7 +18,7 @@ public class Comment extends Model{
     private String name;
     private String comment;
 
-    public static final Finder<Long, Comment> FINDER = new Finder<Long, Comment>();
+    public static final Finder<Long, Comment> FINDER = new Finder<Long, Comment>(Long.class, Comment.class);
 
     public long getId() {
         return id;

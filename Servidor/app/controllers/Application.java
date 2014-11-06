@@ -126,4 +126,33 @@ public class Application extends Controller {
         }
         return ok(toJson(fish));
     }
+
+    public static Result deleteFish(long id) {
+        Fish fish = Fish.FINDER.byId(id);
+        if (fish == null) {
+            return notFound("There is no fish with the id: " + id);
+        }
+        fish.delete();
+        return ok();
+    }
+
+    public static Result deleteComment(long fishId, long commentId) {
+        Comment commentObject = Comment.FINDER.byId(commentId);
+        Fish fish = Fish.FINDER.byId(fishId);
+        Comment comment = Comment.FINDER.byId(commentId);
+
+        //TODO probably there is a better way to do this, I will refactor some day.
+        if (fish == null) {
+            return notFound("There is no fish with the id: " + fishId);
+        }
+        if (comment == null) {
+            return notFound("There is no comment with the id: " + commentId);
+        }
+        if (!fish.getComments().contains(comment)) {
+            return notFound("There is no comment with the id: " + commentId + " in the fish with the id: " + fishId);
+        }
+
+        comment.delete();
+        return ok();
+    }
 }

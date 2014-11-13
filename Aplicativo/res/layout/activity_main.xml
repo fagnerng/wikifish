@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="left"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@string/app_name" />
+                    android:text="@string/title_name" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@string/app_name" />
+                    android:text="@string/title_scientific_name" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="@string/app_name" />
+                    android:text="@string/title_price" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,19 +91,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_help_feeding_habits" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/forms" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
-                android:text="@string/app_name" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,19 +111,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_help_reproduction" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/forms" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
-                android:text="@string/app_name" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,19 +131,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_help_aquarium_lighting" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/forms" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
-                android:text="@string/app_name" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,19 +151,76 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_help_temperament" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/forms" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:text="@string/app_name" />
+                android:text="@string/title_help_aquarium_setup" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/forms" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_help_swimming_habits" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/forms" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/title_help_other" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/forms" />
         </LinearLayout>
     </LinearLayout>
 

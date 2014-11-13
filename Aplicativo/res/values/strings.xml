@@ -3,8 +3,9 @@
 
     <string name="app_name">WikiFish</string>
     <string name="title_activity_about">Help</string>
-    <string name="tittle_name">Name</string>
-    <string name="title_price">Name</string>
+    <string name="title_name">Name:</string>
+    <string name="title_price">Price:</string>
+    <string name="title_scientific_name">Scientific:</string>
     <string name="title_help_feeding_habits">Feeding Habits</string>
     <string name="title_help_reproduction">Reproduction</string>
     <string name="title_help_aquarium_lighting">Aquarium lighting</string>
@@ -52,5 +53,9 @@
         <item>Maximum lenght to which the fish grows (in centimeters).</item>
         <item>Capacity (in liters) of smallest aquarium in which fish may be kept.</item>
     </string-array>
+
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

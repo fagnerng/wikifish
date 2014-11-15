@@ -6,27 +6,48 @@
 create table comment (
   id                        bigint not null,
   fish_id                   bigint not null,
-  userName                      varchar(255),
+  user_name                 varchar(255),
   comment                   varchar(255),
+  comment_likes             integer,
   constraint pk_comment primary key (id))
 ;
 
 create table fish (
   id                        bigint not null,
-  userName                      varchar(255),
+  usual_name                varchar(255),
   cientific_name            varchar(255),
   ph                        float,
   dh                        float,
   temperature               float,
   maximum_length            float,
-  region_id                 bigint,
   aquarium_liters           float,
+  dry_package_food          boolean,
+  live_worms                boolean,
+  live_fish                 boolean,
+  vegetarian                boolean,
+  peaceful                  boolean,
+  agressive                 boolean,
+  eggylayer                 boolean,
+  livebearer                boolean,
+  mothbrooder               boolean,
+  bottom                    boolean,
+  top                       boolean,
+  middle                    boolean,
+  no_special                boolean,
+  densidly_plated           boolean,
+  only_rocks                boolean,
+  only_substract            boolean,
+  complete_set              boolean,
+  bright                    boolean,
+  medium                    boolean,
+  dark                      boolean,
+  region_id                 bigint,
   constraint pk_fish primary key (id))
 ;
 
 create table region (
   id                        bigint not null,
-  userName                      varchar(255),
+  name                      varchar(255),
   constraint pk_region primary key (id))
 ;
 

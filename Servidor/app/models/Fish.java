@@ -226,14 +226,6 @@ public class Fish extends Model {
 
     public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
 
-    public float getAquariumLiters() {
-        return aquariumLiters;
-    }
-
-    public void setAquariumLiters(float aquariumLiters) {
-        this.aquariumLiters = aquariumLiters;
-    }
-
     public float getMaximumLength() {
         return maximumLength;
     }
@@ -273,8 +265,6 @@ public class Fish extends Model {
     public void setCientificName(String cientificName) {
         this.cientificName = cientificName;
     }
-
-    private float aquariumLiters;
 
     public long getId() {
         return id;

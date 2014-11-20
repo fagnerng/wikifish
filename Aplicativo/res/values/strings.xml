@@ -16,7 +16,11 @@
     <string name="title_help_other">Other</string>
     <string name="action_setting">Settings</string>
     <string name="colon">:</string>
+    <string name="comment_new">New Comment</string>
 
+    <string name="comment_submit">Submit</string>
+     <string name="comment_hint">put your comment here</string>
+    
     <string-array name="description_feeding_habits">
         <item>Dry, packaged food.</item>
         <item>Live worms, Daphnia, etc.</item>

@@ -1,15 +1,19 @@
 package com.wikifish.entity;
 
-public class Comment {
+public class Comment implements Comparable<Comment>{
 	private String owner;
 	private String comment;
 	private int id;
+	private int numberOfLike;
+	private Boolean liked;
 
-	public Comment(int id, String owner, String comment) {
+	public Comment(int id, String owner, String comment, int likes, Boolean liked) {
 		super();
 		this.id = id;
 		this.owner = owner;
 		this.comment = comment;
+		this.numberOfLike = likes;
+		this.liked = liked;
 	}
 
 	public int getId() {
@@ -32,4 +36,33 @@ public class Comment {
 		this.comment = comment;
 	}
 
+	public int getNumberOfLike() {
+		return numberOfLike;
+	}
+
+	public void like() {
+		if(!liked){
+		liked = true;
+		numberOfLike ++;
+		}
+	}
+	
+	public void dislike() {
+		if(liked){
+		numberOfLike --;
+		liked = false;
+		}
+	}
+
+	@Override
+	public int compareTo(Comment another) {
+		
+		return another.getNumberOfLike()- this.getNumberOfLike() ;
+	}
+
+	public Boolean isLiked() {
+		return liked;
+	}
+
+	
 }

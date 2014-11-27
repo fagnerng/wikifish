@@ -5,8 +5,10 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "user_")
+@Entity
+@Table(name = "usuario")
 public class User extends Model {
 
     public static final Finder<String, User> FINDER = new Finder(String.class, User.class);

@@ -1,4 +1,3 @@
-
 package com.wikifish.persistence.cache;
 
 import android.graphics.Bitmap;

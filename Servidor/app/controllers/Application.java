@@ -8,7 +8,6 @@ import models.User;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
 
 import static play.libs.Json.fromJson;
 import static play.libs.Json.toJson;
@@ -17,14 +16,10 @@ import static play.mvc.BodyParser.Json;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+        return redirect(routes.Application.fishs());
     }
 
     public static Result fishs() {
-        Fish f = new Fish();
-        f.setUsualName("name");
-        f.setCientificName("name");
-        f.save();
         return ok(toJson(Fish.FINDER.all()));
     }
 

@@ -1,23 +1,25 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import play.db.ebean.Model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-@JsonInclude(NON_EMPTY)
+//@JsonInclude(NON_EMPTY)
 public class Fish extends Model {
+
+    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
 
     @Id
     private long id;
-
     private String usualName;
     private String cientificName;
     private float ph;
@@ -44,6 +46,7 @@ public class Fish extends Model {
     private boolean complete_set;
     private boolean bright;
     private boolean medium;
+
     private boolean dark;
 
     @OneToMany(cascade = ALL, fetch = LAZY)
@@ -223,8 +226,6 @@ public class Fish extends Model {
     public Fish() {
         comments = new ArrayList<>();
     }
-
-    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
 
     public float getMaximumLength() {
         return maximumLength;

@@ -6,9 +6,9 @@
 create table comment (
   id                        bigint not null,
   fish_id                   bigint not null,
-  user_name                 varchar(255),
   comment                   varchar(255),
   comment_likes             integer,
+  owner_email               varchar(255) not null,
   constraint pk_comment primary key (id))
 ;
 
@@ -51,16 +51,26 @@ create table region (
   constraint pk_region primary key (id))
 ;
 
+create table user (
+  email                     varchar(255) not null,
+  password                  varchar(255),
+  constraint pk_user primary key (email))
+;
+
 create sequence comment_seq;
 
 create sequence fish_seq;
 
 create sequence region_seq;
 
+create sequence user_seq;
+
 alter table comment add constraint fk_comment_fish_1 foreign key (fish_id) references fish (id) on delete restrict on update restrict;
 create index ix_comment_fish_1 on comment (fish_id);
-alter table fish add constraint fk_fish_region_2 foreign key (region_id) references region (id) on delete restrict on update restrict;
-create index ix_fish_region_2 on fish (region_id);
+alter table comment add constraint fk_comment_owner_2 foreign key (owner_email) references user (email) on delete restrict on update restrict;
+create index ix_comment_owner_2 on comment (owner_email);
+alter table fish add constraint fk_fish_region_3 foreign key (region_id) references region (id) on delete restrict on update restrict;
+create index ix_fish_region_3 on fish (region_id);
 
 
 
@@ -74,6 +84,8 @@ drop table if exists fish;
 
 drop table if exists region;
 
+drop table if exists user;
+
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists comment_seq;
@@ -81,4 +93,6 @@ drop sequence if exists comment_seq;
 drop sequence if exists fish_seq;
 
 drop sequence if exists region_seq;
+
+drop sequence if exists user_seq;
 

@@ -1,25 +1,29 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.avaje.ebean.validation.NotNull;
 import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
-@JsonInclude(NON_EMPTY)
 public class Comment extends Model {
 
     @Id
     private long id;
 
-    private String userName;
     private String comment;
     private int commentLikes;
 
-    public static final Finder<Long, Comment> FINDER = new Finder<Long, Comment>(Long.class, Comment.class);
+    @ManyToOne(cascade = ALL, fetch = EAGER, optional = false)
+    @NotNull
+    private User owner;
+
+    public static final Finder<Long, Comment> FINDER = new Finder(Long.class, Comment.class);
 
     public long getId() {
         return id;
@@ -27,14 +31,6 @@ public class Comment extends Model {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getComment() {
@@ -51,5 +47,13 @@ public class Comment extends Model {
 
     public void setCommentLikes(int commentLikes) {
         this.commentLikes = commentLikes;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

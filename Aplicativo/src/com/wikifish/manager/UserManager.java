@@ -1,3 +1,4 @@
+
 package com.wikifish.manager;
 
 import com.wikifish.entity.User;

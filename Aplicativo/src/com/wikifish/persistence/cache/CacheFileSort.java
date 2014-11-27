@@ -31,7 +31,6 @@ public class CacheFileSort implements Comparator<File> {
 
     /*
      * (non-Javadoc)
-     * 
      * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
      */
     public int compare(File file, File otherFile) {

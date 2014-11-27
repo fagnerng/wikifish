@@ -48,7 +48,6 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClick(final View v) {
-                fillVariables();
 
                 if (!checkErr()) {
                     final Bundle data = new Bundle();
@@ -68,7 +67,7 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClick(final View v) {
-                fillVariables();
+
                 if (!checkErr()) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
@@ -84,6 +83,7 @@ public class LoginActivity extends Activity {
     }
 
     private Boolean checkErr() {
+        fillVariables();
         Boolean err = false;
         if (!isValidEmail(mEmail)) {
             etEmail.setError("email invalid");

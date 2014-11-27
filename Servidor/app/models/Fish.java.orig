@@ -16,7 +16,7 @@ import static javax.persistence.FetchType.LAZY;
 //@JsonInclude(NON_EMPTY)
 public class Fish extends Model {
 
-    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
+<<<<<<< HEAD
     private enum ReproductionEnum {
         EGGYLAYER, LIVEBEARER, MOUTHBROODER
     }
@@ -37,10 +37,12 @@ public class Fish extends Model {
         BOTTOM, TOP, MIDDLE, NO_SPECIAL
     }
 
+=======
+    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
+>>>>>>> 4fa6a579f48f94d87b6d21236642e42b68b70204
 
     @Id
     private long id;
-
     private String usualName;
     private String cientificName;
     private float ph;
@@ -52,18 +54,37 @@ public class Fish extends Model {
     private boolean live_worms;
     private boolean live_fish;
     private boolean vegetarian;
+<<<<<<< HEAD
     private ReproductionEnum reproduction;
     private AquariumLightEnum aquariumLight;
     private TemperamentEnum temperament;
     private AquariumSetUpEnum aquariumSetUp;
     private SwimmingEnum swimming;
+=======
+    private boolean peaceful;
+    private boolean agressive;
+    private boolean eggylayer;
+    private boolean livebearer;
+    private boolean mothbrooder;
+    private boolean bottom;
+    private boolean top;
+    private boolean middle;
+    private boolean no_special;
+    private boolean densidly_plated;
+    private boolean only_rocks;
+    private boolean only_substract;
+    private boolean complete_set;
+    private boolean bright;
+    private boolean medium;
+
+    private boolean dark;
+>>>>>>> 4fa6a579f48f94d87b6d21236642e42b68b70204
 
     @OneToMany(cascade = ALL, fetch = LAZY)
     private List<Comment> comments;
 
     @OneToOne(cascade = ALL)
     private Region region;
-
 
     public long getId() {
         return id;
@@ -145,8 +166,13 @@ public class Fish extends Model {
         this.live_worms = live_worms;
     }
 
+<<<<<<< HEAD
     public boolean isLive_fish() {
         return live_fish;
+=======
+    public float getMaximumLength() {
+        return maximumLength;
+>>>>>>> 4fa6a579f48f94d87b6d21236642e42b68b70204
     }
 
     public void setLive_fish(boolean live_fish) {
@@ -162,7 +188,7 @@ public class Fish extends Model {
     }
 
     public ReproductionEnum getReproduction() {
-        return reproduction;
+        return this.reproduction;
     }
 
     public void setReproduction(ReproductionEnum reproduction) {
@@ -170,7 +196,7 @@ public class Fish extends Model {
     }
 
     public AquariumLightEnum getAquariumLight() {
-        return aquariumLight;
+        return this.aquariumLight;
     }
 
     public void setAquariumLight(AquariumLightEnum aquariumLight) {
@@ -178,7 +204,7 @@ public class Fish extends Model {
     }
 
     public TemperamentEnum getTemperament() {
-        return temperament;
+        return this.temperament;
     }
 
     public void setTemperament(TemperamentEnum temperament) {
@@ -186,7 +212,7 @@ public class Fish extends Model {
     }
 
     public AquariumSetUpEnum getAquariumSetUp() {
-        return aquariumSetUp;
+        return this.aquariumSetUp;
     }
 
     public void setAquariumSetUp(AquariumSetUpEnum aquariumSetUp) {
@@ -194,23 +220,11 @@ public class Fish extends Model {
     }
 
     public SwimmingEnum getSwimming() {
-        return swimming;
+        return this.swimming;
     }
 
     public void setSwimming(SwimmingEnum swimming) {
         this.swimming = swimming;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void addComment(Comment comment){
-        this.comments.add(comment);
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 
     public Region getRegion() {
@@ -219,6 +233,18 @@ public class Fish extends Model {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
     }
 
     public Fish() {
@@ -244,4 +270,8 @@ public class Fish extends Model {
         this.swimming = SwimmingEnum.NO_SPECIAL;
         comments = new ArrayList<>();
     }
+
+    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
+
+
 }

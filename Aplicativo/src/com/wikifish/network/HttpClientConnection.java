@@ -1,4 +1,3 @@
-
 package com.wikifish.network;
 
 import com.wikifish.utils.Logger;
@@ -19,8 +18,10 @@ public class HttpClientConnection {
     /**
      * Default HttpClientConnections constructor
      * 
-     * @param url URL to be accessed
-     * @param method Which method should be used
+     * @param url
+     *            URL to be accessed
+     * @param method
+     *            Which method should be used
      */
     public HttpClientConnection(String url) {
         mHttpClient = new DefaultHttpClient();

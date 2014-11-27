@@ -1,4 +1,3 @@
-
 package com.wikifish.image;
 
 import android.graphics.Bitmap;
@@ -17,6 +16,7 @@ public class ImageDownloader {
 
     private HttpClientConnection mNetworkConn;
     private final String TAG = getClass().getName();
+
     public ImageDownloader(String url) {
         mNetworkConn = new HttpClientConnection(url);
     }
@@ -49,7 +49,7 @@ public class ImageDownloader {
                 }
             }
         } catch (Exception e) {
-           Logger.log(TAG,e.getMessage());
+            Logger.log(TAG, e.getMessage());
         }
 
         return bitmap;

@@ -1,4 +1,3 @@
-
 package com.wikifish.persistence.cache;
 
 import android.graphics.Bitmap;
@@ -47,6 +46,7 @@ public class MemoryCache {
 
     /**
      * Add a bitmap to memory cache
+     * 
      * @param key
      * @param bitmap
      */
@@ -58,6 +58,7 @@ public class MemoryCache {
 
     /**
      * Get a bitmap from cache
+     * 
      * @param key
      * @return
      */

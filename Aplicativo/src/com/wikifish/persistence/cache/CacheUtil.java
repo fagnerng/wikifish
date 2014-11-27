@@ -40,8 +40,10 @@ public class CacheUtil {
      * Returns an InputStream for the cached file corresponding to the passed
      * URL if it exists or null otherwise.
      * 
-     * @param url Remote URL of the file to look for in the cache directory.
-     * @param context The current application context.
+     * @param url
+     *            Remote URL of the file to look for in the cache directory.
+     * @param context
+     *            The current application context.
      * @return InputStream for the cached file corresponding to the passed URL
      *         if it exists or null.
      */
@@ -75,8 +77,10 @@ public class CacheUtil {
      * Returns the image file path md5 hash corresponding to the passed URL if
      * it exists or null otherwise.
      * 
-     * @param url Remote URL of the file to look for in the cache directory.
-     * @param context The current application context.
+     * @param url
+     *            Remote URL of the file to look for in the cache directory.
+     * @param context
+     *            The current application context.
      * @return file path md5 corresponding to the passed URL if it exists or
      *         null.
      */
@@ -122,9 +126,12 @@ public class CacheUtil {
      * Creates a cached file from the passed InputStream. Returns the
      * InputStream to the created cache file if succeeded and null otherwise
      * 
-     * @param url The full remote URL from which the file is being downloaded.
-     * @param is The InputStream from the remote file to be cached.
-     * @param context The current application context.
+     * @param url
+     *            The full remote URL from which the file is being downloaded.
+     * @param is
+     *            The InputStream from the remote file to be cached.
+     * @param context
+     *            The current application context.
      * @return String representing the file path from the file that has been
      *         downloaded and created in the file system.
      */
@@ -192,7 +199,8 @@ public class CacheUtil {
     /**
      * Returns the total size of the cache files stored.
      * 
-     * @param context The current application context.
+     * @param context
+     *            The current application context.
      * @return the total size of the cache files stored in bytes or -1 if any IO
      *         error occurs while reading file sizes.
      */
@@ -238,8 +246,10 @@ public class CacheUtil {
     /**
      * Deletes cached files until the passed goal size is reached.
      * 
-     * @param goalSize The size in bytes the cache must have.
-     * @param context The current application context.
+     * @param goalSize
+     *            The size in bytes the cache must have.
+     * @param context
+     *            The current application context.
      * @return The actual size of cached files after trimming or -1 if some
      *         error occurred.
      */
@@ -276,7 +286,8 @@ public class CacheUtil {
     /**
      * Returns the MD5 hash equivalent to the passed String.
      * 
-     * @param s The String to be "hashed".
+     * @param s
+     *            The String to be "hashed".
      * @return the MD5 hash equivalent to the passed String.
      */
     private static String hashMD5(String s) {
@@ -312,10 +323,13 @@ public class CacheUtil {
     /**
      * Copy data from an input stream to an output stream
      * 
-     * @param is Input stream
-     * @param os Output stream
+     * @param is
+     *            Input stream
+     * @param os
+     *            Output stream
      * @return The total number of copied bytes
-     * @throws IOException If an I/O exception occurred
+     * @throws IOException
+     *             If an I/O exception occurred
      */
     private static int copyStream(InputStream is, OutputStream os)
             throws IOException {
@@ -339,7 +353,8 @@ public class CacheUtil {
      * @param height
      * @return
      */
-	public static Bitmap decodeImage(InputStream inputStream, int width, int height) {
+    public static Bitmap decodeImage(InputStream inputStream, int width,
+            int height) {
         Bitmap bitmap = null;
 
         if (inputStream != null) {
@@ -367,7 +382,8 @@ public class CacheUtil {
         return bitmap;
     }
 
-    public static void createCachedBitmapFile(String url, Bitmap bitmap, Context context) {
+    public static void createCachedBitmapFile(String url, Bitmap bitmap,
+            Context context) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(CompressFormat.PNG, 0 /* ignored for PNG */, bos);
         byte[] bitmapdata = bos.toByteArray();
@@ -386,10 +402,13 @@ public class CacheUtil {
      * which can be faster when decoding but results in a larger bitmap which
      * isn't as useful for caching purposes.
      * 
-     * @param options An options object with out* params already populated (run
+     * @param options
+     *            An options object with out* params already populated (run
      *            through a decode* method with inJustDecodeBounds==true
-     * @param reqWidth The requested width of the resulting bitmap
-     * @param reqHeight The requested height of the resulting bitmap
+     * @param reqWidth
+     *            The requested width of the resulting bitmap
+     * @param reqHeight
+     *            The requested height of the resulting bitmap
      * @return The value to be used for inSampleSize
      */
     private static int calculateInSampleSize(BitmapFactory.Options options,
@@ -403,7 +422,8 @@ public class CacheUtil {
 
             // Calculate ratios of height and width to requested height and
             // width
-            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int heightRatio = Math.round((float) height
+                    / (float) reqHeight);
             final int widthRatio = Math.round((float) width / (float) reqWidth);
 
             // Choose the smallest ratio as inSampleSize value, this will

@@ -17,14 +17,16 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
 public class ImageHandlingTask extends AsyncTask<String, Void, Bitmap> {
-    private final WeakReference<ImageView> imageViewReference;
-    private Context mContext;
-    private String mUrl;
-    private int mHeight;
-    private int mWidth;
-    private final String TAG = getClass().getName();
 
-    public ImageHandlingTask(ImageView imageView, Context context) {
+    private final Logger mLogger = new Logger(getClass().getName());
+
+    private final WeakReference<ImageView> imageViewReference;
+    private final Context mContext;
+    private String mUrl;
+    private final int mHeight;
+    private final int mWidth;
+
+    public ImageHandlingTask(final ImageView imageView, final Context context) {
         imageViewReference = new WeakReference<ImageView>(imageView);
         mHeight = imageView.getHeight();
         mWidth = imageView.getWidth();
@@ -33,32 +35,32 @@ public class ImageHandlingTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     // Actual download method, run in the task thread
-    protected Bitmap doInBackground(String... params) {
+    protected Bitmap doInBackground(final String... params) {
         Bitmap bitmap = null;
         mUrl = params[0];
-        
+
         if (mUrl != null && !TextUtils.isEmpty(mUrl)) {
-        	Logger.log(TAG, mUrl);
+            mLogger.debug(mUrl);
             // First, check if it's available in memory cache
             bitmap = MemoryCache.getInstance().getBitmapFromMemCache(mUrl);
 
             if (bitmap == null) {
-            	Logger.log(TAG, "bitmap null0");
+                mLogger.debug("bitmap null0");
                 // Check against file system cache
                 if (CacheUtil.hasCachedFile(mUrl, mContext) != null) {
-                	Logger.log(TAG, "Cache not null");
-                    InputStream cachedFile = CacheUtil.getCachedFile(mUrl, mContext);
+                    mLogger.debug("Cache not null");
+                    final InputStream cachedFile = CacheUtil.getCachedFile(mUrl, mContext);
                     bitmap = CacheUtil.decodeImage(cachedFile, mWidth, mHeight);
                 }
 
                 // not in cache, download
                 if (bitmap == null) {
-                	Logger.log(TAG, "bitmap null1");
-                    ImageDownloader manager = new ImageDownloader(mUrl);
+                    mLogger.debug("bitmap null1");
+                    final ImageDownloader manager = new ImageDownloader(mUrl);
                     bitmap = manager.downloadBitmap();
 
                     if (bitmap != null) {
-                    	Logger.log(TAG, "bitmap not null");
+                        mLogger.debug("bitmap not null");
                         // add it to caches
                         MemoryCache.getInstance().addBitmapToMemoryCache(mUrl, bitmap);
                         CacheUtil.createCachedBitmapFile(mUrl, bitmap, mContext);
@@ -78,7 +80,7 @@ public class ImageHandlingTask extends AsyncTask<String, Void, Bitmap> {
         }
 
         if (imageViewReference != null) {
-            ImageView imageView = imageViewReference.get();
+            final ImageView imageView = imageViewReference.get();
             if (imageView != null && imageView.getTag() != null && imageView.getTag().equals(mUrl)) {
                 if (bitmap != null) {
                     imageView.setImageBitmap(bitmap);
@@ -86,7 +88,7 @@ public class ImageHandlingTask extends AsyncTask<String, Void, Bitmap> {
                 } else {
                     imageView.setImageDrawable(imageView.getContext().getResources()
                             .getDrawable(R.drawable.default_fish));
-       
+
                 }
             }
 

@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "org.avaje.ebeanorm" % "avaje-ebeanorm-api" % "3.1.1"
 )

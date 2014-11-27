@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import models.Comment;
 import models.Fish;
-import play.db.ebean.Model;
+import models.User;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -21,7 +21,10 @@ public class Application extends Controller {
     }
 
     public static Result fishs() {
-        new Fish().save();
+        Fish f = new Fish();
+        f.setUsualName("name");
+        f.setCientificName("name");
+        f.save();
         return ok(toJson(Fish.FINDER.all()));
     }
 
@@ -60,7 +63,6 @@ public class Application extends Controller {
         }
     }
 
-    @BodyParser.Of(Json.class)
     public static Result comments(long id) {
         Fish fish = Fish.FINDER.byId(id);
         if (fish == null) {
@@ -69,7 +71,7 @@ public class Application extends Controller {
         return ok(toJson(fish.getComments()));
     }
 
-    public static Result newComments(long id) {
+    public static Result newComments(String email, long id) {
         try {
             JsonNode json = request().body().asJson();
             Comment commentObject = fromJson(json, Comment.class);
@@ -78,9 +80,10 @@ public class Application extends Controller {
             if (fish == null) {
                 return notFound("There is no fish with the id: " + id);
             }
+            commentObject.setOwner(User.FINDER.byId(email));
             fish.addComment(commentObject);
             fish.update();
-            return created("/fish/" + id + "/" + commentObject.getId());
+            return created("/fish/" + id + "/comment/" + commentObject.getId());
         } catch (Exception e) {
             if (e instanceof UnrecognizedPropertyException) {
                 return badRequest("this Json is not valid");
@@ -154,5 +157,42 @@ public class Application extends Controller {
 
         comment.delete();
         return ok();
+    }
+
+    @BodyParser.Of(Json.class)
+    public static Result newUser() {
+        try {
+            JsonNode json = request().body().asJson();
+            User userObject = fromJson(json, User.class);
+            userObject.save();
+            return created();
+        } catch (Exception e) {
+            if (e instanceof UnrecognizedPropertyException) {
+                return badRequest("this Json is not valid");
+            } else {
+                return internalServerError("Something happened and was not possible persist this fish");
+            }
+        }
+    }
+
+    @BodyParser.Of(Json.class)
+    public static Result login() {
+        try {
+            JsonNode json = request().body().asJson();
+            User userRequest = fromJson(json, User.class);
+            User realUser = User.FINDER.byId(userRequest.getEmail());
+            if (realUser.getPassword().equals(userRequest.getEmail())) {
+                return ok();
+            } else {
+                return badRequest("Invalid Password");
+            }
+
+        } catch (Exception e) {
+            if (e instanceof UnrecognizedPropertyException) {
+                return badRequest("this Json is not valid");
+            } else {
+                return internalServerError("Something happened and was not possible persist this fish");
+            }
+        }
     }
 }

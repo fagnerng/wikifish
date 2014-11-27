@@ -12,9 +12,10 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-@JsonInclude(NON_EMPTY)
+//@JsonInclude(NON_EMPTY)
 public class Fish extends Model {
 
+    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
     private enum ReproductionEnum {
         EGGYLAYER, LIVEBEARER, MOUTHBROODER
     }
@@ -62,62 +63,6 @@ public class Fish extends Model {
     @OneToOne(cascade = ALL)
     private Region region;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsualName() {
-        return usualName;
-    }
-
-    public void setUsualName(String usualName) {
-        this.usualName = usualName;
-    }
-
-    public String getCientificName() {
-        return cientificName;
-    }
-
-    public void setCientificName(String cientificName) {
-        this.cientificName = cientificName;
-    }
-
-    public float getPh() {
-        return ph;
-    }
-
-    public void setPh(float ph) {
-        this.ph = ph;
-    }
-
-    public int getDh() {
-        return dh;
-    }
-
-    public void setDh(int dh) {
-        this.dh = dh;
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(float temperature) {
-        this.temperature = temperature;
-    }
-
-    public float getMaximumLength() {
-        return maximumLength;
-    }
-
-    public void setMaximumLength(float maximumLength) {
-        this.maximumLength = maximumLength;
-    }
-
     public float getAquarium_liters() {
         return aquarium_liters;
     }
@@ -158,64 +103,132 @@ public class Fish extends Model {
         this.vegetarian = vegetarian;
     }
 
-    public ReproductionEnum getReproduction() {
-        return this.reproduction;
+    public boolean isPeaceful() {
+        return peaceful;
     }
 
-    public void setReproduction(ReproductionEnum reproduction) {
-        this.reproduction = reproduction;
+    public void setPeaceful(boolean peaceful) {
+        this.peaceful = peaceful;
     }
 
-    public AquariumLightEnum getAquariumLight() {
-        return this.aquariumLight;
+    public boolean isAgressive() {
+        return agressive;
     }
 
-    public void setAquariumLight(AquariumLightEnum aquariumLight) {
-        this.aquariumLight = aquariumLight;
+    public void setAgressive(boolean agressive) {
+        this.agressive = agressive;
     }
 
-    public TemperamentEnum getTemperament() {
-        return this.temperament;
+    public boolean isEggylayer() {
+        return eggylayer;
     }
 
-    public void setTemperament(TemperamentEnum temperament) {
-        this.temperament = temperament;
+    public void setEggylayer(boolean eggylayer) {
+        this.eggylayer = eggylayer;
     }
 
-    public AquariumSetUpEnum getAquariumSetUp() {
-        return this.aquariumSetUp;
+    public boolean isLivebearer() {
+        return livebearer;
     }
 
-    public void setAquariumSetUp(AquariumSetUpEnum aquariumSetUp) {
-        this.aquariumSetUp = aquariumSetUp;
+    public void setLivebearer(boolean livebearer) {
+        this.livebearer = livebearer;
     }
 
-    public SwimmingEnum getSwimming() {
-        return this.swimming;
+    public boolean isMothbrooder() {
+        return mothbrooder;
     }
 
-    public void setSwimming(SwimmingEnum swimming) {
-        this.swimming = swimming;
+    public void setMothbrooder(boolean mothbrooder) {
+        this.mothbrooder = mothbrooder;
     }
 
-    public Region getRegion() {
-        return region;
+    public boolean isBottom() {
+        return bottom;
     }
 
-    public void setRegion(Region region) {
-        this.region = region;
+    public void setBottom(boolean bottom) {
+        this.bottom = bottom;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public boolean isTop() {
+        return top;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setTop(boolean top) {
+        this.top = top;
     }
 
-    public void addComment(Comment comment) {
-        this.comments.add(comment);
+    public boolean isMiddle() {
+        return middle;
+    }
+
+    public void setMiddle(boolean middle) {
+        this.middle = middle;
+    }
+
+    public boolean isNo_special() {
+        return no_special;
+    }
+
+    public void setNo_special(boolean no_special) {
+        this.no_special = no_special;
+    }
+
+    public boolean isDensidly_plated() {
+        return densidly_plated;
+    }
+
+    public void setDensidly_plated(boolean densidly_plated) {
+        this.densidly_plated = densidly_plated;
+    }
+
+    public boolean isOnly_rocks() {
+        return only_rocks;
+    }
+
+    public void setOnly_rocks(boolean only_rocks) {
+        this.only_rocks = only_rocks;
+    }
+
+    public boolean isOnly_substract() {
+        return only_substract;
+    }
+
+    public void setOnly_substract(boolean only_substract) {
+        this.only_substract = only_substract;
+    }
+
+    public boolean isComplete_set() {
+        return complete_set;
+    }
+
+    public void setComplete_set(boolean complete_set) {
+        this.complete_set = complete_set;
+    }
+
+    public boolean isBright() {
+        return bright;
+    }
+
+    public void setBright(boolean bright) {
+        this.bright = bright;
+    }
+
+    public boolean isMedium() {
+        return medium;
+    }
+
+    public void setMedium(boolean medium) {
+        this.medium = medium;
+    }
+
+    public boolean isDark() {
+        return dark;
+    }
+
+    public void setDark(boolean dark) {
+        this.dark = dark;
     }
 
     public Fish() {
@@ -242,7 +255,39 @@ public class Fish extends Model {
         comments = new ArrayList<>();
     }
 
-    public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public String getUsualName() {
+        return usualName;
+    }
+
+    public void setUsualName(String usualName) {
+        this.usualName = usualName;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
 }

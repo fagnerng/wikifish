@@ -15,9 +15,11 @@ import java.io.InputStream;
 
 public class ImageDownloader {
 
-    private HttpClientConnection mNetworkConn;
-    private final String TAG = getClass().getName();
-    public ImageDownloader(String url) {
+    private final Logger mLogger = new Logger(getClass().getName());
+
+    private final HttpClientConnection mNetworkConn;
+
+    public ImageDownloader(final String url) {
         mNetworkConn = new HttpClientConnection(url);
     }
 
@@ -28,7 +30,7 @@ public class ImageDownloader {
         Bitmap bitmap = null;
 
         try {
-            HttpResponse response = mNetworkConn.execute();
+            final HttpResponse response = mNetworkConn.execute();
             final int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode != HttpStatus.SC_OK) {
                 return null;
@@ -48,8 +50,8 @@ public class ImageDownloader {
                     entity.consumeContent();
                 }
             }
-        } catch (Exception e) {
-           Logger.log(TAG,e.getMessage());
+        } catch (final Exception e) {
+            mLogger.error(e.getMessage());
         }
 
         return bitmap;

@@ -7,6 +7,22 @@
     <string name="title_name">Name:</string>
     <string name="title_price">Price:</string>
     <string name="title_scientific_name">Scientific:</string>
+    <string name="action_setting">Settings</string>
+    <string name="colon">:</string>
+    <string name="comment_submit">Submit</string>
+    <string name="hint_comment">Put your comment here</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- User Strings // -->
+    <string name="hint_email">Email</string>
+    <string name="hint_password">*****</string>
+    <string name="hint_name">Name</string>
+    <string name="bt_register">Register</string>
+    <string name="bt_login">Login</string>
+    <string name="bt_cancel">Cancel</string>
+    <string name="title_create">Create User</string>
+
+    <!-- \\User Strings -->
+    <!-- Helpe Strings// -->
     <string name="title_help_feeding_habits">Feeding Habits</string>
     <string name="title_help_reproduction">Reproduction</string>
     <string name="title_help_aquarium_lighting">Aquarium lighting</string>
@@ -14,17 +30,11 @@
     <string name="title_help_aquarium_setup">Aquarium Set-Up</string>
     <string name="title_help_swimming_habits">Swimming Habits</string>
     <string name="title_help_other">Other</string>
-    <string name="action_setting">Settings</string>
-    <string name="colon">:</string>
-    <string name="comment_new">New Comment</string>
-    
+
     <!-- Connection Infos -->
     <string name="cant_without_connection">Impossivel sem conexão.</string>
     <string name="connection_unavailable">Conexão indisponivel.</string>
 
-    <string name="comment_submit">Submit</string>
-     <string name="comment_hint">put your comment here</string>
-    
     <string-array name="description_feeding_habits">
         <item>Dry, packaged food.</item>
         <item>Live worms, Daphnia, etc.</item>
@@ -64,5 +74,6 @@
         <item>Maximum lenght to which the fish grows (in centimeters).</item>
         <item>Capacity (in liters) of smallest aquarium in which fish may be kept.</item>
     </string-array>
+    <!-- \\Helpe Strings -->
 
 </resources>

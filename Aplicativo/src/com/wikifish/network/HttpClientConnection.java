@@ -13,23 +13,25 @@ import java.io.IOException;
 
 public class HttpClientConnection {
 
-    private HttpClient mHttpClient;
-    private HttpGet mGet;
+    private final Logger mLogger = new Logger(getClass().getName());
+
+    private final HttpClient mHttpClient;
+    private final HttpGet mGet;
 
     /**
      * Default HttpClientConnections constructor
-     * 
+     *
      * @param url URL to be accessed
      * @param method Which method should be used
      */
-    public HttpClientConnection(String url) {
+    public HttpClientConnection(final String url) {
         mHttpClient = new DefaultHttpClient();
         mGet = new HttpGet(url);
     }
 
     /**
      * Execute HttpClient connection
-     * 
+     *
      * @return Returns the current server response
      */
     public HttpResponse execute() {
@@ -37,11 +39,11 @@ public class HttpClientConnection {
             if (mGet != null) {
                 return mHttpClient.execute(mGet);
             }
-        } catch (ClientProtocolException e) {
-            Logger.log(getClass().getSimpleName(), "ClientProtocolException");
+        } catch (final ClientProtocolException e) {
+            mLogger.error("ClientProtocolException", e);
             return null;
-        } catch (IOException e) {
-            Logger.log(getClass().getSimpleName(), "IOException");
+        } catch (final IOException e) {
+            mLogger.error("IOException", e);
             return null;
         }
         return null;

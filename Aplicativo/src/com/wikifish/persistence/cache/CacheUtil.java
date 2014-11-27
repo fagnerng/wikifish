@@ -1,3 +1,4 @@
+
 package com.wikifish.persistence.cache;
 
 import android.content.Context;
@@ -339,7 +340,7 @@ public class CacheUtil {
      * @param height
      * @return
      */
-	public static Bitmap decodeImage(InputStream inputStream, int width, int height) {
+    public static Bitmap decodeImage(InputStream inputStream, int width, int height) {
         Bitmap bitmap = null;
 
         if (inputStream != null) {

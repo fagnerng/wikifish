@@ -2,12 +2,12 @@
 package com.wikifish;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class LoginActivity extends Activity {
     private EditText etEmail;
@@ -49,16 +49,8 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(final View v) {
                 fillVariables();
-                Boolean err = false;
-                if (!isValidEmail(mEmail)) {
-                    etEmail.setError("email invalid");
-                    err = true;
-                }
-                if (!isValidPassword(mPassword)) {
-                    etPassword.setError("password too short");
-                    err = true;
-                }
-                if (!err) {
+
+                if (!checkErr()) {
                     final Bundle data = new Bundle();
                     data.putString("email", mEmail);
                     data.putString("password", mPassword);
@@ -77,8 +69,9 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(final View v) {
                 fillVariables();
-                Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT)
-                        .show();
+                if (!checkErr()) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
             }
         };
     }
@@ -88,5 +81,18 @@ public class LoginActivity extends Activity {
         mPassword = etPassword != null ? mPassword = etPassword.getText()
                 .toString() : "";
 
+    }
+
+    private Boolean checkErr() {
+        Boolean err = false;
+        if (!isValidEmail(mEmail)) {
+            etEmail.setError("email invalid");
+            err = true;
+        }
+        if (!isValidPassword(mPassword)) {
+            etPassword.setError("password too short");
+            err = true;
+        }
+        return err;
     }
 }

@@ -17,6 +17,10 @@
     <string name="action_setting">Settings</string>
     <string name="colon">:</string>
     <string name="comment_new">New Comment</string>
+    
+    <!-- Connection Infos -->
+    <string name="cant_without_connection">Impossivel sem conexão.</string>
+    <string name="connection_unavailable">Conexão indisponivel.</string>
 
     <string name="comment_submit">Submit</string>
      <string name="comment_hint">put your comment here</string>

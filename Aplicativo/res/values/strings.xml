@@ -77,4 +77,10 @@
     </string-array>
     <!-- \\Helpe Strings -->
 
+    <string name="title_activity_list_all">ListAllActivity</string>
+    <string name="hello_world">Hello world!</string>
+     <string name="is_empty">Is Empty</string>
+      <string name="fish_name_default">Name of fish</string>
+    
+
 </resources>

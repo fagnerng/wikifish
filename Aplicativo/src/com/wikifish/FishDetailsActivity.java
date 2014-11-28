@@ -16,7 +16,7 @@ import com.wikifish.entity.Comment;
 import com.wikifish.image.ImageHandlingTask;
 import com.wikifish.listadapter.CommentListAdapter;
 
-public class MainActivity extends Activity {
+public class FishDetailsActivity extends Activity {
 
     CommentListAdapter adapter;
     EditText et_comment;
@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_fish_details);
         ImageView iv_fish = (ImageView) findViewById(R.id.iv_picture_fish);
         iv_fish.setTag("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
         ImageHandlingTask iHT_downloader = new ImageHandlingTask(iv_fish, this);

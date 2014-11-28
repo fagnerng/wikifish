@@ -69,7 +69,8 @@ public class LoginActivity extends Activity {
             public void onClick(final View v) {
 
                 if (!checkErr()) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ListAllActivity.class));
+                    finish();
                 }
             }
         };

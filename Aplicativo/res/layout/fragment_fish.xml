@@ -12,7 +12,7 @@
         android:src="@drawable/default_fish" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_name_preview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"

@@ -7,8 +7,8 @@ import android.os.AsyncTask;
 import com.wikifish.utils.Logger;
 import com.wikifish.utils.WikiFishUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class GetJSONTask extends AsyncTask<String, Void, String> {
 
@@ -52,13 +52,13 @@ public class GetJSONTask extends AsyncTask<String, Void, String> {
     // onPostExecute displays the results of the AsyncTask.
     @Override
     protected void onPostExecute(final String result) {
-        JSONObject mainObject;
+        JSONArray mainObject;
 
         try {
             if (result != null) {
-                mainObject = new JSONObject(result);
+                mainObject = new JSONArray(result);
             } else {
-                mainObject = new JSONObject("{'status': 'failed'}");
+                mainObject = new JSONArray("[{'status': 'failed'}]");
             }
 
             mLogger.debug(mainObject.toString());
@@ -72,6 +72,6 @@ public class GetJSONTask extends AsyncTask<String, Void, String> {
     }
 
     public interface GetJSONInterface {
-        public void callbackGetJSON(final JSONObject json);
+        public void callbackGetJSON(final JSONArray json);
     }
 }

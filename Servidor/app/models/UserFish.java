@@ -5,13 +5,11 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
-public class User extends Model {
+public class UserFish extends Model {
 
-    public static final Finder<String, User> FINDER = new Finder(String.class, User.class);
+    public static final Finder<String, UserFish> FINDER = new Finder(String.class, UserFish.class);
 
     @Id
     private String email;

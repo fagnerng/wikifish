@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import models.Comment;
 import models.Fish;
-import models.User;
+import models.UserFish;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -75,7 +75,7 @@ public class Application extends Controller {
             if (fish == null) {
                 return notFound("There is no fish with the id: " + id);
             }
-            commentObject.setOwner(User.FINDER.byId(email));
+            commentObject.setOwner(UserFish.FINDER.byId(email));
             fish.addComment(commentObject);
             fish.update();
             return created("/fish/" + id + "/comment/" + commentObject.getId());
@@ -158,7 +158,7 @@ public class Application extends Controller {
     public static Result newUser() {
         try {
             JsonNode json = request().body().asJson();
-            User userObject = fromJson(json, User.class);
+            UserFish userObject = fromJson(json, UserFish.class);
             userObject.save();
             return created();
         } catch (Exception e) {
@@ -174,8 +174,8 @@ public class Application extends Controller {
     public static Result login() {
         try {
             JsonNode json = request().body().asJson();
-            User userRequest = fromJson(json, User.class);
-            User realUser = User.FINDER.byId(userRequest.getEmail());
+            UserFish userRequest = fromJson(json, UserFish.class);
+            UserFish realUser = UserFish.FINDER.byId(userRequest.getEmail());
             if (realUser.getPassword().equals(userRequest.getEmail())) {
                 return ok();
             } else {
@@ -189,5 +189,9 @@ public class Application extends Controller {
                 return internalServerError("Something happened and was not possible persist this fish");
             }
         }
+    }
+
+    public static Result api() {
+        return ok(views.html.api.render());
     }
 }

@@ -13,10 +13,10 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-//@JsonInclude(NON_EMPTY)
 public class Fish extends Model {
 
     public static final Finder<Long, Fish> FINDER = new Finder(Long.class, Fish.class);
+
     private enum ReproductionEnum {
         EGGYLAYER, LIVEBEARER, MOUTHBROODER
     }
@@ -30,13 +30,16 @@ public class Fish extends Model {
     }
 
     private enum AquariumSetUpEnum {
-        DENSIDLY_PLANTED, ONLY_ROCKS, ONLY_SUBSTRACT, COMPLETED_SET
+        DENSILY_PLANTED, ONLY_ROCKS, ONLY_SUBSTRACT, COMPLETED_SET
     }
 
     private enum SwimmingEnum {
         BOTTOM, TOP, MIDDLE, NO_SPECIAL
     }
 
+    private enum AlimentationEnum {
+        DRY_PACKAGE_FOOD, LIVE_WORMS, LIVE_FISH, VEGETARIAN
+    }
 
     @Id
     private long id;
@@ -48,15 +51,13 @@ public class Fish extends Model {
     private float temperature;
     private float maximumLength;
     private float aquarium_liters;
-    private boolean dry_package_food;
-    private boolean live_worms;
-    private boolean live_fish;
-    private boolean vegetarian;
+    private AlimentationEnum alimentation;
     private ReproductionEnum reproduction;
     private AquariumLightEnum aquariumLight;
     private TemperamentEnum temperament;
     private AquariumSetUpEnum aquariumSetUp;
     private SwimmingEnum swimming;
+    private String urlPicture = "";
 
     @OneToMany(cascade = ALL, fetch = LAZY)
     private List<Comment> comments;
@@ -129,38 +130,6 @@ public class Fish extends Model {
         this.aquarium_liters = aquarium_liters;
     }
 
-    public boolean isDry_package_food() {
-        return dry_package_food;
-    }
-
-    public void setDry_package_food(boolean dry_package_food) {
-        this.dry_package_food = dry_package_food;
-    }
-
-    public boolean isLive_worms() {
-        return live_worms;
-    }
-
-    public void setLive_worms(boolean live_worms) {
-        this.live_worms = live_worms;
-    }
-
-    public boolean isLive_fish() {
-        return live_fish;
-    }
-
-    public void setLive_fish(boolean live_fish) {
-        this.live_fish = live_fish;
-    }
-
-    public boolean isVegetarian() {
-        return vegetarian;
-    }
-
-    public void setVegetarian(boolean vegetarian) {
-        this.vegetarian = vegetarian;
-    }
-
     public ReproductionEnum getReproduction() {
         return reproduction;
     }
@@ -221,6 +190,22 @@ public class Fish extends Model {
         this.region = region;
     }
 
+    public AlimentationEnum getAlimentation() {
+        return alimentation;
+    }
+
+    public void setAlimentation(AlimentationEnum alimentation) {
+        this.alimentation = alimentation;
+    }
+
+    public String getUrlPicture() {
+        return urlPicture;
+    }
+
+    public void setUrlPicture(String urlPicture) {
+        this.urlPicture = urlPicture;
+    }
+
     public Fish() {
         comments = new ArrayList<>();
     }
@@ -233,10 +218,6 @@ public class Fish extends Model {
         this.temperature = 37.0f;
         this.maximumLength = 15.0f;
         this.aquarium_liters = 100.0f;
-        this.dry_package_food = true;
-        this.live_worms = false;
-        this.live_fish = false;
-        this.vegetarian = false;
         this.reproduction = ReproductionEnum.EGGYLAYER;
         this.aquariumLight = AquariumLightEnum.MEDIUM;
         this.temperament = TemperamentEnum.PEACEFUL;

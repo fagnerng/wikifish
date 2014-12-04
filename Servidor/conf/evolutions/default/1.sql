@@ -21,16 +21,15 @@ create table fish (
   temperature               float,
   maximum_length            float,
   aquarium_liters           float,
-  dry_package_food          boolean,
-  live_worms                boolean,
-  live_fish                 boolean,
-  vegetarian                boolean,
+  alimentation              integer,
   reproduction              integer,
   aquarium_light            integer,
   temperament               integer,
   aquarium_set_up           integer,
   swimming                  integer,
+  url_picture               varchar(255),
   region_id                 bigint,
+  constraint ck_fish_alimentation check (alimentation in (0,1,2,3)),
   constraint ck_fish_reproduction check (reproduction in (0,1,2)),
   constraint ck_fish_aquarium_light check (aquarium_light in (0,1,2)),
   constraint ck_fish_temperament check (temperament in (0,1)),
@@ -45,10 +44,10 @@ create table region (
   constraint pk_region primary key (id))
 ;
 
-create table user (
+create table user_fish (
   email                     varchar(255) not null,
   password                  varchar(255),
-  constraint pk_user primary key (email))
+  constraint pk_user_fish primary key (email))
 ;
 
 create sequence comment_seq;
@@ -57,11 +56,11 @@ create sequence fish_seq;
 
 create sequence region_seq;
 
-create sequence user_seq;
+create sequence user_fish_seq;
 
 alter table comment add constraint fk_comment_fish_1 foreign key (fish_id) references fish (id) on delete restrict on update restrict;
 create index ix_comment_fish_1 on comment (fish_id);
-alter table comment add constraint fk_comment_owner_2 foreign key (owner_email) references user (email) on delete restrict on update restrict;
+alter table comment add constraint fk_comment_owner_2 foreign key (owner_email) references user_fish (email) on delete restrict on update restrict;
 create index ix_comment_owner_2 on comment (owner_email);
 alter table fish add constraint fk_fish_region_3 foreign key (region_id) references region (id) on delete restrict on update restrict;
 create index ix_fish_region_3 on fish (region_id);
@@ -78,7 +77,7 @@ drop table if exists fish;
 
 drop table if exists region;
 
-drop table if exists user;
+drop table if exists user_fish;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
@@ -88,5 +87,5 @@ drop sequence if exists fish_seq;
 
 drop sequence if exists region_seq;
 
-drop sequence if exists user_seq;
+drop sequence if exists user_fish_seq;
 

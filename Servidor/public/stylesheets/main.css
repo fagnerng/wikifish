@@ -1,0 +1,97 @@
+html {
+    background-color: gray;
+}
+
+body {
+    background-color: white;
+    color: gray;
+    margin:1em auto;
+    width:700px;
+    padding:4em;
+    border:1px solid #ffd;
+}
+
+h1 {
+    color: #005;
+}
+
+.log {
+    border:1px solid #ffd;
+    padding: 1em 1em 1em 1em;
+    margin-bottom: 1em;
+    border-radius:8px;
+    border:0px solid;
+    background-color: #f99;
+    box-shadow:3px 3px 3px #bbb;
+    color: black;
+}
+
+.msg {
+    color: white;
+    background: blue;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    width: 40%;
+    height: 4em;
+    opacity: 0.4;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 5 5 30px rgba(0, 0, 0, 0.5);
+    padding-top: 2em;
+    border-radius:8px;
+    font-size: 250%;
+}
+
+.aviso {
+    padding: 1em 1em 1em 1em;
+    margin-bottom: 1em;
+    border:5px solid black;
+    background: linear-gradient(to right, red, #f99, red);
+    box-shadow:3px 3px 3px #333;
+    color: white;
+    text-align: center;
+    font-size: 250%;
+}
+
+table {
+    width: 100%;
+}
+
+#tabela {
+    border-collapse:collapse;
+    width: 100%;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    font:13px/27px Arial,sans-serif;
+}
+
+#tabela table, #tabela th, #tabela tr {
+    border-collapse:collapse;
+    border: 0px solid black;
+    text-align:center;
+    padding: 2px 10px 2px 10px;
+    white-space: nowrap;
+}
+
+#tabela th {
+    background-color: #00b;
+    color: white;
+    border-collapse:collapse;
+    border: 0px solid black;
+    padding: 2px 10px 2px 10px;
+    font-weight: bold;
+    text-align:center;
+}
+
+#tabela td {
+    white-space: nowrap;
+    line-height:150%;
+    height: 2em;
+}
+
+#tabela tr:hover {
+    background-color: #ffb;
+}

@@ -21,7 +21,7 @@ public class Comment extends Model {
 
     @ManyToOne(cascade = ALL, fetch = EAGER, optional = false)
     @NotNull
-    private User owner;
+    private UserFish owner;
 
     public static final Finder<Long, Comment> FINDER = new Finder(Long.class, Comment.class);
 
@@ -49,11 +49,11 @@ public class Comment extends Model {
         this.commentLikes = commentLikes;
     }
 
-    public User getOwner() {
+    public UserFish getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(UserFish owner) {
         this.owner = owner;
     }
 }

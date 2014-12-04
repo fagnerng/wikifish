@@ -2,6 +2,8 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+GET           /api                                    controllers.Application.api
+
 # Home page
 GET           /                                       controllers.Application.index
 
@@ -14,7 +16,7 @@ DELETE        /fish/:id                               controllers.Application.de
 
 #comments
 GET           /fish/:id/comment                       controllers.Application.comments(id: Long)
-POST          /user/:email/fish/:id/comment            controllers.Application.newComments(email: String, id: Long)
+POST          /user/:email/fish/:id/comment           controllers.Application.newComments(email: String, id: Long)
 PUT           /fish/:fishId/comment/:commentId        controllers.Application.updateComments(fishId: Long, commentId: Long)
 DELETE        /fish/:fishId/comment/:commentId        controllers.Application.deleteComment(fishId: Long, commentId: Long)
 

@@ -9,6 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.wikifish.entity.User;
+import com.wikifish.manager.ApplicationData;
+
 public class LoginActivity extends Activity {
     private EditText etEmail;
     private EditText etPassword;
@@ -20,8 +23,10 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         init();
+
     }
 
     private void init() {
@@ -69,6 +74,9 @@ public class LoginActivity extends Activity {
             public void onClick(final View v) {
 
                 if (!checkErr()) {
+                    ApplicationData.getInstance().setUser(
+                            new User(etEmail.getText().toString().split("@")[0], etEmail.getText()
+                                    .toString(), etPassword.getText().toString()));
                     startActivity(new Intent(LoginActivity.this, ListAllActivity.class));
                     finish();
                 }
@@ -95,5 +103,19 @@ public class LoginActivity extends Activity {
             err = true;
         }
         return err;
+    }
+
+    @Override
+    protected void onResume() {
+        if (ApplicationData.getInstance() != null) {
+            ApplicationData.getInstance().restoreUser();
+            if (ApplicationData.getInstance().getUser() != null) {
+                startActivity(new Intent(LoginActivity.this, ListAllActivity.class));
+                finish();
+            }
+        }
+
+        super.onResume();
+
     }
 }

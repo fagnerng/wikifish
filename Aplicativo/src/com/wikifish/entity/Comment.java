@@ -1,20 +1,32 @@
 
 package com.wikifish.entity;
 
-public class Comment implements Comparable<Comment> {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class Comment implements Comparable<Comment>, ToJson {
     private String owner;
     private String comment;
-    private int id;
-    private int numberOfLike;
-    private Boolean liked;
+    private final int id;
+    private final ArrayList<Integer> likes = new ArrayList<Integer>();
 
-    public Comment(int id, String owner, String comment, int likes, Boolean liked) {
-        super();
-        this.id = id;
-        this.owner = owner;
-        this.comment = comment;
-        this.numberOfLike = likes;
-        this.liked = liked;
+    public Comment(final JSONObject json) {
+        owner = (String) getObjectByTag("owner", json, "");
+        comment = (String) getObjectByTag("comment", json, "");
+        id = (Integer) getObjectByTag("id", json, -1);
+    }
+
+    private Object getObjectByTag(final String tag, final JSONObject json, final Object defaultValue) {
+        Object value = null;
+        try {
+            value = json.get(tag);
+        } catch (final Exception e) {
+            e.getMessage();
+        }
+
+        return value != null ? value : defaultValue;
     }
 
     public int getId() {
@@ -25,7 +37,7 @@ public class Comment implements Comparable<Comment> {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(final String owner) {
         this.owner = owner;
     }
 
@@ -33,36 +45,51 @@ public class Comment implements Comparable<Comment> {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(final String comment) {
         this.comment = comment;
     }
 
     public int getNumberOfLike() {
-        return numberOfLike;
+
+        return likes.size();
     }
 
-    public void like() {
-        if (!liked) {
-            liked = true;
-            numberOfLike++;
+    public void like(final Integer id) {
+        if (!isLiked(id)) {
+            likes.add(id);
         }
     }
 
-    public void dislike() {
-        if (liked) {
-            numberOfLike--;
-            liked = false;
+    public void dislike(final Integer id) {
+        if (isLiked(id)) {
+            likes.remove(id);
         }
     }
 
     @Override
-    public int compareTo(Comment another) {
+    public int compareTo(final Comment another) {
 
-        return another.getNumberOfLike() - this.getNumberOfLike();
+        return another.getNumberOfLike() - getNumberOfLike();
     }
 
-    public Boolean isLiked() {
-        return liked;
+    public Boolean isLiked(final Integer id) {
+        return likes.contains(id);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        final JSONObject json = new JSONObject();
+        try {
+            json.put("comment", comment);
+            json.put("id", id);
+            json.put("likes", likes.toArray());
+
+        } catch (final JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return json;
     }
 
 }

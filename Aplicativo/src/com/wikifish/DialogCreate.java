@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.wikifish.entity.User;
+import com.wikifish.manager.ApplicationData;
+
 public class DialogCreate extends Dialog {
     private EditText etEmail;
     private EditText etPassword;
@@ -51,6 +54,7 @@ public class DialogCreate extends Dialog {
             public void onClick(final View v) {
                 fillVariables();
                 if (!createUser()) {
+                    ApplicationData.getInstance().setUser(new User(mName, mEmail, mPassword));
                     DialogCreate.this.dismiss();
                 }
 

@@ -69,13 +69,14 @@ public class CommentListAdapter extends BaseAdapter {
         ImageButton like, dislike;
         like = (ImageButton) view.findViewById(R.id.ib_like);
         dislike = (ImageButton) view.findViewById(R.id.ib_dislike);
-        like.setEnabled(!comment.isLiked());
-        dislike.setEnabled(comment.isLiked());
+        // TODO mudar esse -1 para o id do usuario logado
+        like.setEnabled(!comment.isLiked(-1));
+        dislike.setEnabled(comment.isLiked(-1));
         like.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(final View v) {
-                comment.like();
+                comment.like(-1);
                 Collections.sort(comments);
                 notifyDataSetChanged();
             }
@@ -84,7 +85,7 @@ public class CommentListAdapter extends BaseAdapter {
 
             @Override
             public void onClick(final View v) {
-                comment.dislike();
+                comment.dislike(-1);
                 Collections.sort(comments);
                 notifyDataSetChanged();
 

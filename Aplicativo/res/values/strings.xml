@@ -10,7 +10,7 @@
     <string name="title_scientific_name">Scientific:</string>
     <string name="action_setting">Settings</string>
     <string name="colon">:</string>
-    <string name="comment_submit">Submit</string>
+    <string name="add_comment">Add comment</string>
     <string name="hint_comment">Put your comment here</string>
     <string name="title_activity_login">LoginActivity</string>
     <!-- User Strings // -->
@@ -21,6 +21,9 @@
     <string name="bt_login">Login</string>
     <string name="bt_cancel">Cancel</string>
     <string name="title_create">Create User</string>
+    <string name="action_search">Search</string>
+    <string name="action_logout">Logout</string>
+    <string name="title_image_preview">Image Preview</string>
 
     <!-- \\User Strings -->
     <!-- Helpe Strings// -->
@@ -79,8 +82,8 @@
 
     <string name="title_activity_list_all">ListAllActivity</string>
     <string name="hello_world">Hello world!</string>
-     <string name="is_empty">Is Empty</string>
-      <string name="fish_name_default">Name of fish</string>
-    
+    <string name="is_empty">Is Empty</string>
+    <string name="fish_name_default">Name of fish</string>
+    <string name="title_activity_teste">Teste</string>
 
 </resources>

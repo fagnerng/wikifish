@@ -95,7 +95,7 @@
             android:id="@+id/bt_add_comment"
              android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/comment_submit"
+            android:text="@string/add_comment"
             android:layout_gravity="right"
             android:enabled="false"/>
     </LinearLayout>

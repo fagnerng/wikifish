@@ -36,18 +36,26 @@ public class FishDetailsActivity extends Activity {
         setHelpButton();
         setTextInfo();
         setComments();
-        if (!mFish.getUrlPicture().isEmpty()) {
-            setPicture();
-        }
+        setPicture();
 
     }
 
     private void setPicture() {
         final ImageView iv_fish = (ImageView) findViewById(R.id.iv_picture_fish);
-        iv_fish.setTag(mFish.getUrlPicture());
-        final ImageHandlingTask iHT_downloader = new ImageHandlingTask(iv_fish, this);
-        iHT_downloader
-                .execute(mFish.getUrlPicture());
+        iv_fish.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(final View v) {
+                new DialogImageZoom(FishDetailsActivity.this, iv_fish.getDrawable()).show();
+
+            }
+        });
+        if (!mFish.getUrlPicture().isEmpty()) {
+            iv_fish.setTag(mFish.getUrlPicture());
+            final ImageHandlingTask iHT_downloader = new ImageHandlingTask(iv_fish, this);
+            iHT_downloader
+                    .execute(mFish.getUrlPicture());
+        }
     }
 
     private void setHelpButton() {

@@ -1,40 +1,61 @@
+
 package com.wikifish.entity;
 
-public class User {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
+
+public class User implements ToJson, Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private String name;
-    private Aquarium setUp;
     private String email;
     private String password;
 
-    public User(String name, String email) {
+    public User(final String name, final String email, final String password) {
         super();
         this.name = name;
         this.email = email;
+        this.password = password;
+    }
+
+    public User(final JSONObject json) {
+        super();
+        name = (String) getObjectByTag("name", json, "");
+        email = (String) getObjectByTag("email", json, "sample@mail.com");
+        password = (String) getObjectByTag("password", json, "123456");
+    }
+
+    private Object getObjectByTag(final String tag, final JSONObject json, final Object defaultValue) {
+        Object value = null;
+        try {
+            value = json.get(tag);
+        } catch (final Exception e) {
+            e.getMessage();
+        }
+
+        return value != null ? value : defaultValue;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
-    }
-
-    public Aquarium getSetUp() {
-        return setUp;
-    }
-
-    public void setSetUp(Aquarium setUp) {
-        this.setUp = setUp;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) throws Exception {
-        if (!isValidEmail(email))
+    public void setEmail(final String email) throws Exception {
+        if (!isValidEmail(email)) {
             throw new Exception("Email invalid");
+        }
         this.email = email;
     }
 
@@ -42,17 +63,34 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) throws Exception {
-        if (!isValidPassword(password))
+    public void setPassword(final String password) throws Exception {
+        if (!isValidPassword(password)) {
             throw new Exception("Password invalid");
+        }
         this.password = password;
     }
 
-    private boolean isValidEmail(String email) {
+    private boolean isValidEmail(final String email) {
         return email.contains("@") && email.contains(".");
     }
 
-    private boolean isValidPassword(String password) {
+    private boolean isValidPassword(final String password) {
         return password.length() > 4;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        final JSONObject json = new JSONObject();
+        try {
+            json.put("name", name);
+            json.put("email", email);
+            json.put("password", password);
+
+        } catch (final JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return json;
     }
 }

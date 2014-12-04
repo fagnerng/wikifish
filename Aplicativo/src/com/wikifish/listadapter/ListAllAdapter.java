@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.wikifish.FishDetailsActivity;
 import com.wikifish.R;
 import com.wikifish.entity.Fish;
-import com.wikifish.image.ImageHandlingTask;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -32,13 +34,20 @@ public class ListAllAdapter extends BaseAdapter {
     private final LayoutInflater mLayoutInflater;
     public static ArrayList<Fish> allFishs;
 
-    public ListAllAdapter(final Context context) {
+    public ListAllAdapter(final Context context, final JSONArray json) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
         allFishs = new ArrayList<Fish>();
-        for (int i = 0; i < 5; i++) {
-            allFishs.add(new Fish());
+        for (int i = 0; i < json.length(); i++) {
+            try {
+                allFishs.add(new Fish(json.getJSONObject(i)));
+            } catch (final JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
         }
+
     }
 
     @Override
@@ -65,6 +74,8 @@ public class ListAllAdapter extends BaseAdapter {
             return isEmptyView();
         }
         final View view = mLayoutInflater.inflate(R.layout.fragment_fish, null);
+        final TextView tvnamePreview = (TextView) view.findViewById(R.id.tv_name_preview);
+        tvnamePreview.setText(allFishs.get(position).getUsualName());
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -74,11 +85,13 @@ public class ListAllAdapter extends BaseAdapter {
 
             }
         });
-        final ImageView iv_fish = (ImageView) view.findViewById(R.id.iv_picture_fish);
-        iv_fish.setTag("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
-        final ImageHandlingTask iHT_downloader = new ImageHandlingTask(iv_fish, mContext);
-        iHT_downloader
-                .execute("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
+        // final ImageView iv_fish = (ImageView)
+        // view.findViewById(R.id.iv_picture_fish);
+        // iv_fish.setTag("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
+        // final ImageHandlingTask iHT_downloader = new
+        // ImageHandlingTask(iv_fish, mContext);
+        // iHT_downloader
+        // .execute("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
         return view;
     }
 
@@ -87,4 +100,5 @@ public class ListAllAdapter extends BaseAdapter {
 
         return view;
     }
+
 }

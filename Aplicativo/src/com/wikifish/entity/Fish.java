@@ -13,15 +13,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Fish {
-    private Long id = 0L;
+    private Integer id = 0;
     private String usualName = "";
     private String cientificName;
 
-    private Float ph;
-    private Float dh;
-    private Float temperature;
-    private Float maximumLength;
-    private Float aquarium_liters;
+    private Double ph;
+    private Integer dh;
+    private Double temperature;
+    private Double maximumLength;
+    private Double aquarium_liters;
 
     private AquariumLighting aquariumLight;
     private AquariumSetUp aquariumSetUp;
@@ -43,14 +43,14 @@ public class Fish {
 
     private void initValues(final JSONObject json) {
 
-        id = (Long) getObjectByTag("id", json, 0L);
+        id = (Integer) getObjectByTag("id", json, 0L);
         usualName = (String) getObjectByTag("usualName", json, "");
         cientificName = (String) getObjectByTag("cientificName", json, "");
-        setPh((Float) getObjectByTag("ph", json, 0));
-        dh = (Float) getObjectByTag("dh", json, 0);
-        temperature = (Float) getObjectByTag("temperature", json, 0);
-        maximumLength = (Float) getObjectByTag("maximumLength", json, 0);
-        aquarium_liters = (Float) getObjectByTag("aquarium_liters", json, 0);
+        ph = (Double) getObjectByTag("ph", json, 0.0);
+        dh = (Integer) getObjectByTag("dh", json, 0);
+        temperature = (Double) getObjectByTag("temperature", json, 0);
+        maximumLength = (Double) getObjectByTag("maximumLength", json, 0);
+        aquarium_liters = (Double) getObjectByTag("aquarium_liters", json, 0);
         initEnums(json);
     }
 
@@ -82,19 +82,19 @@ public class Fish {
         return null;
     }
 
-    public Float getPh() {
+    public Double getPh() {
         return ph;
     }
 
-    public void setPh(final Float ph) {
+    public void setPh(final Double ph) {
         this.ph = ph;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -114,35 +114,35 @@ public class Fish {
         this.cientificName = cientificName;
     }
 
-    public Float getDh() {
+    public Integer getDh() {
         return dh;
     }
 
-    public void setDh(final Float dh) {
+    public void setDh(final Integer dh) {
         this.dh = dh;
     }
 
-    public Float getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(final Float temperature) {
+    public void setTemperature(final Double temperature) {
         this.temperature = temperature;
     }
 
-    public Float getMaximumLength() {
+    public Double getMaximumLength() {
         return maximumLength;
     }
 
-    public void setMaximumLength(final Float maximumLength) {
+    public void setMaximumLength(final Double maximumLength) {
         this.maximumLength = maximumLength;
     }
 
-    public Float getAquarium_liters() {
+    public Double getAquarium_liters() {
         return aquarium_liters;
     }
 
-    public void setAquarium_liters(final Float aquarium_liters) {
+    public void setAquarium_liters(final Double aquarium_liters) {
         this.aquarium_liters = aquarium_liters;
     }
 

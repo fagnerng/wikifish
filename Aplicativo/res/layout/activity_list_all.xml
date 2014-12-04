@@ -8,34 +8,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wikifish.ListAllActivity" >
 
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10" 
-        android:enabled="false">
-
-
-    </EditText>
-
-    <ImageButton
-        android:id="@+id/ib_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/et_search"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/et_search"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_search_category_default" />
-
     <ListView
         android:id="@+id/lv_list_all"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/et_search"
-        android:layout_below="@+id/et_search" >
+        android:layout_height="wrap_content" >
     </ListView>
 
 </RelativeLayout>

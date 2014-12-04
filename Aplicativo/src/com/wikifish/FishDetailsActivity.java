@@ -7,85 +7,84 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.wikifish.entity.Comment;
+import com.wikifish.entity.Fish;
 import com.wikifish.image.ImageHandlingTask;
 import com.wikifish.listadapter.CommentListAdapter;
 
 public class FishDetailsActivity extends Activity {
 
     CommentListAdapter adapter;
-    EditText et_comment;
     Button bt_add_comment;
+    private Fish mFish;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_fish_details);
-        ImageView iv_fish = (ImageView) findViewById(R.id.iv_picture_fish);
-        iv_fish.setTag("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
-        ImageHandlingTask iHT_downloader = new ImageHandlingTask(iv_fish, this);
+        mFish = (Fish) getIntent().getSerializableExtra(Fish.KEY);
+        if (mFish != null) {
+            init();
+        }
+    }
+
+    private void init() {
+        setHelpButton();
+        setTextInfo();
+        setComments();
+        if (!mFish.getUrlPicture().isEmpty()) {
+            setPicture();
+        }
+
+    }
+
+    private void setPicture() {
+        final ImageView iv_fish = (ImageView) findViewById(R.id.iv_picture_fish);
+        iv_fish.setTag(mFish.getUrlPicture());
+        final ImageHandlingTask iHT_downloader = new ImageHandlingTask(iv_fish, this);
         iHT_downloader
-                .execute("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
-        ImageView iv_help = (ImageView) findViewById(R.id.iv_help);
+                .execute(mFish.getUrlPicture());
+    }
+
+    private void setHelpButton() {
+        final ImageView iv_help = (ImageView) findViewById(R.id.iv_help);
         final Dialog mDialog = new DialogHelp(this);
-        et_comment = (EditText) findViewById(R.id.et_comment);
-        et_comment.setSelected(false);
 
-        et_comment.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                et_comment.setEnabled(true);
-
-                bt_add_comment.setEnabled(true);
-
-            }
-        });
         iv_help.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 mDialog.show();
 
             }
         });
+    }
 
-        ListView lv_comments = (ListView) findViewById(R.id.lv_comments);
-        adapter = new CommentListAdapter(this);
+    private void setComments() {
+        final ListView lv_comments = (ListView) findViewById(R.id.lv_comments);
+        adapter = new CommentListAdapter(this, mFish.getComments());
         lv_comments.setAdapter(adapter);
         bt_add_comment = (Button) findViewById(R.id.bt_add_comment);
         bt_add_comment.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                addNewComment();
-                et_comment.setText("");
-                bt_add_comment.setEnabled(false);
+            public void onClick(final View v) {
+                // TODO adiciona um novo comentario
 
             }
 
         });
-
     }
 
-    private void addNewComment() {
-
-        String comment = et_comment.getText().toString();
-        if (comment.trim().isEmpty()) {
-            Toast.makeText(this, "comment not be empty", Toast.LENGTH_SHORT)
-                    .show();
-        } else {
-            if (CommentListAdapter.comments != null) {
-                CommentListAdapter.comments.add(new Comment(-1, "my user",
-                        comment.trim(), 0, false));
-                adapter.notifyDataSetChanged();
-            }
-        }
-
+    private void setTextInfo() {
+        final TextView tv_name = (TextView) findViewById(R.id.tv_usual_name);
+        tv_name.setText(mFish.getUsualName());
+        final TextView tv_scientific = (TextView) findViewById(R.id.tv_scientific_name);
+        tv_scientific.setText(mFish.getScientificName());
     }
+
 }

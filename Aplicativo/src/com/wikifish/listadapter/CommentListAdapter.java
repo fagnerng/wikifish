@@ -4,9 +4,6 @@
 
 package com.wikifish.listadapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,24 +17,24 @@ import android.widget.TextView;
 import com.wikifish.R;
 import com.wikifish.entity.Comment;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * @author fagnerng
  */
 @SuppressLint("ViewHolder")
 public class CommentListAdapter extends BaseAdapter {
 
-    private Context mContext;
+    private final Context mContext;
     private final LayoutInflater mLayoutInflater;
-    public static ArrayList<Comment> comments;
+    private final ArrayList<Comment> comments;
 
-    public CommentListAdapter(Context context) {
-        this.mContext = context;
-        this.mLayoutInflater = LayoutInflater.from(mContext);
-        comments = new ArrayList<Comment>();
-        for (int i = 0; i < 5; i++) {
-            comments.add(new Comment(i, "Usuario " + i, "Comentario " + i, i,
-                    i % 2 != 0));
-        }
+    public CommentListAdapter(final Context context, final ArrayList<Comment> comments) {
+        mContext = context;
+        mLayoutInflater = LayoutInflater.from(mContext);
+        this.comments = comments;
+
         Collections.sort(comments);
     }
 
@@ -47,21 +44,21 @@ public class CommentListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int arg0) {
+    public Object getItem(final int arg0) {
         return comments.get(arg0);
     }
 
     @Override
-    public long getItemId(int arg0) {
+    public long getItemId(final int arg0) {
         return comments.get(arg0).getId();
     }
 
     @Override
-    public View getView(int position, View arg1, ViewGroup arg2) {
-        View view = mLayoutInflater.inflate(R.layout.fragment_comments, null);
-        TextView tvOwner = (TextView) view.findViewById(R.id.tv_owner);
-        TextView tvComment = (TextView) view.findViewById(R.id.tv_comment);
-        TextView numberOflikes = (TextView) view
+    public View getView(final int position, final View arg1, final ViewGroup arg2) {
+        final View view = mLayoutInflater.inflate(R.layout.fragment_comments, null);
+        final TextView tvOwner = (TextView) view.findViewById(R.id.tv_owner);
+        final TextView tvComment = (TextView) view.findViewById(R.id.tv_comment);
+        final TextView numberOflikes = (TextView) view
                 .findViewById(R.id.tv_number_of_likes);
         final Comment comment = comments.get(position);
         tvOwner.setText(comment.getOwner());
@@ -77,7 +74,7 @@ public class CommentListAdapter extends BaseAdapter {
         like.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 comment.like();
                 Collections.sort(comments);
                 notifyDataSetChanged();
@@ -86,7 +83,7 @@ public class CommentListAdapter extends BaseAdapter {
         dislike.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 comment.dislike();
                 Collections.sort(comments);
                 notifyDataSetChanged();

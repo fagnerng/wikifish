@@ -29,7 +29,7 @@ public final class WikiFishUtils {
     private WikiFishUtils() {
     }
 
-    private static final String URL = "http://thiner.herokuapp.com/api/user";
+    private static final String URL = "http://wikifish.herokuapp.com/";
     // private static final String URL = "http://192.168.1.244:5000/api/ti";
 
     /**
@@ -157,7 +157,7 @@ public final class WikiFishUtils {
 
     /**
      * Gets the date time format.
-     *
+     * 
      * @return the date time format
      */
     public static DateTimeFormatter getDateTimeFormat() {

@@ -10,12 +10,19 @@ import com.wikifish.enums.Temperament;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Fish {
+public class Fish implements Serializable {
+    /**
+     * 
+     */
+    public final static String KEY = "fish";
+    private static final long serialVersionUID = 1L;
     private Integer id = 0;
-    private String usualName = "";
-    private String cientificName;
+    private String usualName;
+    private String scientificName;
+    private String urlPicture;
 
     private Double ph;
     private Integer dh;
@@ -30,7 +37,7 @@ public class Fish {
     private SwimmingHabits swimmingHabits;
     private Temperament temperament;
     private ArrayList<Comment> comments;
-    private Object Region;
+    private Object region;
 
     public Fish() {
 
@@ -45,7 +52,8 @@ public class Fish {
 
         id = (Integer) getObjectByTag("id", json, 0L);
         usualName = (String) getObjectByTag("usualName", json, "");
-        cientificName = (String) getObjectByTag("cientificName", json, "");
+        urlPicture = (String) getObjectByTag("urlPicture", json, "");
+        scientificName = (String) getObjectByTag("cientificName", json, "");
         ph = (Double) getObjectByTag("ph", json, 0.0);
         dh = (Integer) getObjectByTag("dh", json, 0);
         temperature = (Double) getObjectByTag("temperature", json, 0);
@@ -106,12 +114,12 @@ public class Fish {
         this.usualName = usualName;
     }
 
-    public String getCientificName() {
-        return cientificName;
+    public String getScientificName() {
+        return scientificName;
     }
 
-    public void setCientificName(final String cientificName) {
-        this.cientificName = cientificName;
+    public void setScientificName(final String scientificName) {
+        this.scientificName = scientificName;
     }
 
     public Integer getDh() {
@@ -195,6 +203,9 @@ public class Fish {
     }
 
     public ArrayList<Comment> getComments() {
+        if (comments == null) {
+            comments = new ArrayList<Comment>();
+        }
         return comments;
     }
 
@@ -203,10 +214,18 @@ public class Fish {
     }
 
     public Object getRegion() {
-        return Region;
+        return region;
     }
 
     public void setRegion(final Object region) {
-        Region = region;
+        this.region = region;
+    }
+
+    public String getUrlPicture() {
+        return urlPicture;
+    }
+
+    public void setUrlPicture(final String urlPicture) {
+        this.urlPicture = urlPicture;
     }
 }

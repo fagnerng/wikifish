@@ -13,11 +13,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wikifish.FishDetailsActivity;
 import com.wikifish.R;
 import com.wikifish.entity.Fish;
+import com.wikifish.image.ImageHandlingTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,25 +75,30 @@ public class ListAllAdapter extends BaseAdapter {
         if (allFishs.isEmpty()) {
             return isEmptyView();
         }
+        final Fish actualFish = allFishs.get(position);
         final View view = mLayoutInflater.inflate(R.layout.fragment_fish, null);
         final TextView tvnamePreview = (TextView) view.findViewById(R.id.tv_name_preview);
-        tvnamePreview.setText(allFishs.get(position).getUsualName());
+        tvnamePreview.setText(actualFish.getUsualName());
         view.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(final View v) {
+                final Intent i = new Intent(mContext, FishDetailsActivity.class);
+                i.putExtra(Fish.KEY, actualFish);
                 ((Activity) mContext)
-                        .startActivity(new Intent(mContext, FishDetailsActivity.class));
+                        .startActivity(i);
 
             }
         });
-        // final ImageView iv_fish = (ImageView)
-        // view.findViewById(R.id.iv_picture_fish);
-        // iv_fish.setTag("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
-        // final ImageHandlingTask iHT_downloader = new
-        // ImageHandlingTask(iv_fish, mContext);
-        // iHT_downloader
-        // .execute("http://www.tonyhakim.com.au/wp-content/uploads/2014/09/Purple-fish.jpg");
+        if (!actualFish.getUrlPicture().isEmpty()) {
+            final ImageView iv_fish = (ImageView)
+                    view.findViewById(R.id.iv_picture_fish);
+            iv_fish.setTag(actualFish.getUrlPicture());
+            final ImageHandlingTask iHT_downloader = new
+                    ImageHandlingTask(iv_fish, mContext);
+            iHT_downloader
+                    .execute(actualFish.getUrlPicture());
+        }
         return view;
     }
 

@@ -8,8 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.wikifish.asynctask.GetJSONTask;
-import com.wikifish.asynctask.GetJSONTask.GetJSONInterface;
+import com.wikifish.asynctask.GetJSONArrayTask;
+import com.wikifish.asynctask.GetJSONArrayTask.GetJSONInterface;
 import com.wikifish.listadapter.ListAllAdapter;
 
 import org.json.JSONArray;
@@ -23,7 +23,7 @@ public class ListAllActivity extends Activity implements GetJSONInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_all);
 
-        final GetJSONTask task = new GetJSONTask(this);
+        final GetJSONArrayTask task = new GetJSONArrayTask(this);
         task.execute("http://wikifish.herokuapp.com/fish");
         dialog = new ProgressDialog(this);
         dialog.setIndeterminate(true);

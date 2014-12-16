@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,10 +36,14 @@ public class ListAllAdapter extends BaseAdapter {
     private final Context mContext;
     private final LayoutInflater mLayoutInflater;
     public static ArrayList<Fish> allFishs;
+    private final Drawable defaultAlbumThumbnail;
 
     public ListAllAdapter(final Context context, final JSONArray json) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
+        defaultAlbumThumbnail = mContext.getResources()
+                .getDrawable(R.drawable.default_fish);
+
         allFishs = new ArrayList<Fish>();
         for (int i = 0; i < json.length(); i++) {
             try {
@@ -71,15 +76,35 @@ public class ListAllAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, final View arg1, final ViewGroup arg2) {
+    public View getView(final int position, final View convertView, final ViewGroup parent) {
+        final Fish actualFish = allFishs.get(position);
+        View row = convertView;
+        ViewHolder holder;
         if (allFishs.isEmpty()) {
             return isEmptyView();
         }
-        final Fish actualFish = allFishs.get(position);
-        final View view = mLayoutInflater.inflate(R.layout.fragment_fish, null);
-        final TextView tvnamePreview = (TextView) view.findViewById(R.id.tv_name_preview);
-        tvnamePreview.setText(actualFish.getUsualName());
-        view.setOnClickListener(new OnClickListener() {
+        else if (row == null) {
+            final ViewHolder viewHolder = new ViewHolder();
+            row = mLayoutInflater.inflate(R.layout.fragment_fish, null);
+            viewHolder.icon = (ImageView) row.findViewById(R.id.iv_picture_fish);
+            viewHolder.name = (TextView) row.findViewById(R.id.tv_name_preview);
+            row.setTag(viewHolder);
+        } else {
+            holder = (ViewHolder) row.getTag();
+            holder.icon = (ImageView) row.findViewById(R.id.iv_picture_fish);
+            holder.icon.clearAnimation();
+            holder.icon.destroyDrawingCache();
+            holder.icon.setImageDrawable(defaultAlbumThumbnail);
+            holder.icon.setTag(null);
+        }
+        holder = (ViewHolder) row.getTag();
+        final String url = actualFish.getUrlPicture();
+        if (holder.icon != null && url != null && !url.isEmpty()) {
+            holder.icon.setTag(url);
+            new ImageHandlingTask(holder.icon, mContext).execute(url);
+        }
+        holder.name.setText(actualFish.getUsualName());
+        row.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(final View v) {
@@ -90,16 +115,8 @@ public class ListAllAdapter extends BaseAdapter {
 
             }
         });
-        if (!actualFish.getUrlPicture().isEmpty()) {
-            final ImageView iv_fish = (ImageView)
-                    view.findViewById(R.id.iv_picture_fish);
-            iv_fish.setTag(actualFish.getUrlPicture());
-            final ImageHandlingTask iHT_downloader = new
-                    ImageHandlingTask(iv_fish, mContext);
-            iHT_downloader
-                    .execute(actualFish.getUrlPicture());
-        }
-        return view;
+
+        return row;
     }
 
     private View isEmptyView() {
@@ -108,4 +125,8 @@ public class ListAllAdapter extends BaseAdapter {
         return view;
     }
 
+    class ViewHolder {
+        ImageView icon;
+        TextView name;
+    }
 }

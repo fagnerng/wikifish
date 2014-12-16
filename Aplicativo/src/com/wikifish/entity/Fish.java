@@ -8,6 +8,8 @@ import com.wikifish.enums.Reproduction;
 import com.wikifish.enums.SwimmingHabits;
 import com.wikifish.enums.Temperament;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -60,6 +62,7 @@ public class Fish implements Serializable {
         maximumLength = (Double) getObjectByTag("maximumLength", json, 0);
         aquarium_liters = (Double) getObjectByTag("aquarium_liters", json, 0);
         initEnums(json);
+        initComments(json);
     }
 
     private void initEnums(final JSONObject json) {
@@ -73,6 +76,20 @@ public class Fish implements Serializable {
                 SwimmingHabits.Bottom);
         temperament = (Temperament) getEnumByTag("temperament", json, Temperament.NotForBegginers);
 
+    }
+
+    private void initComments(final JSONObject json) {
+        try {
+            final JSONArray allComments = json.getJSONArray("comments");
+            comments = new ArrayList<Comment>();
+            for (int i = 0; i < allComments.length(); i++) {
+                comments.add(new Comment(allComments.getJSONObject(i)));
+            }
+
+        } catch (final JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     private Object getObjectByTag(final String tag, final JSONObject json, final Object defaultValue) {

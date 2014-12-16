@@ -65,6 +65,7 @@ public class GetJSONArrayTask extends AsyncTask<String, Void, String> {
             ((GetJSONInterface) mContext).callbackGetJSON(mainObject);
 
         } catch (final JSONException e) {
+
             mLogger.debug(result);
             mLogger.error(e.getMessage());
 

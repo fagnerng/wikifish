@@ -13,6 +13,8 @@
     <string name="add_comment">Add comment</string>
     <string name="hint_comment">Put your comment here</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="button_search">Search</string>
+    <string name="button_clear">Clear</string>
     <!-- User Strings // -->
     <string name="hint_email">Email</string>
     <string name="hint_password">*****</string>

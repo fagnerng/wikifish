@@ -54,7 +54,7 @@ public class Fish implements Serializable {
 	@SerializedName("urlPicture")
 	public String urlPicture;
 	
-	//@SerializedName("comments")
-	//public ArrayList<Comment> comments;
+	@SerializedName("comments")
+	public ArrayList<Comment> comments;
 
 }

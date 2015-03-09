@@ -4,6 +4,9 @@
 
 package com.wikifish.adapter;
 
+import java.util.Collections;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,10 +20,6 @@ import android.widget.TextView;
 import com.wikifish.R;
 import com.wikifish.entity.Comment;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * @author fagnerng
  */
@@ -29,9 +28,9 @@ public class CommentListAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final LayoutInflater mLayoutInflater;
-    private final ArrayList<Comment> comments;
+    private final List<Comment> comments;
 
-    public CommentListAdapter(final Context context, final ArrayList<Comment> comments2) {
+    public CommentListAdapter(final Context context, final List<Comment> comments2) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
         this.comments = comments2;
@@ -67,9 +66,17 @@ public class CommentListAdapter extends BaseAdapter {
 
         numberOflikes.setText(comment.id + "");
 
-        ImageButton like, dislike;
+        ImageButton like;
         like = (ImageButton) view.findViewById(R.id.ib_like);
-        dislike = (ImageButton) view.findViewById(R.id.ib_dislike);
+        like.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				comment.like();
+				
+			}
+		});
+        
         // TODO mudar esse -1 para o id do usuario logado
         
         return view;

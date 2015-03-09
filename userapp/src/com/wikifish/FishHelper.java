@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -23,14 +24,14 @@ import com.wikifish.entity.Fish;
 public class FishHelper {
 	private static final String TAG = "ArticleHelper";
 	public static void loadArticles(String token, FishHelper.Callback callback) {
-		new ArticlesAsyncTask().execute(token, callback);
+		new FishAsyncTask().execute(token, callback);
 	}
 	
 	public static interface Callback {
-		public void call(ArrayList<Fish> articles);
+		public void call(List<Fish> articles);
 	}
 	
-	private static class ArticlesAsyncTask extends AsyncTask<Object, Integer, String>{
+	private static class FishAsyncTask extends AsyncTask<Object, Integer, String>{
 		
 		private FishHelper.Callback callback;
 		
@@ -43,8 +44,13 @@ public class FishHelper {
 		@SuppressWarnings("unchecked")
 		protected void onPostExecute(String result) {
 			Log.d(TAG, result);
-			Type listType = new TypeToken<ArrayList<Fish>>() {}.getType();
-			callback.call((ArrayList<Fish>) new Gson().fromJson(result, listType));
+			Type listType = new TypeToken<List<Fish>>() {}.getType();
+			try{
+			callback.call((List<Fish>) new Gson().fromJson(result, listType));
+			}catch(Exception e){
+				e.printStackTrace();
+				callback.call(new ArrayList<Fish>());
+			}
 		}
 	}
 	

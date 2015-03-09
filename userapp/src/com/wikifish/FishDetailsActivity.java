@@ -78,7 +78,7 @@ public class FishDetailsActivity extends Activity {
 
     private void setComments() {
         final ListView lv_comments = (ListView) findViewById(R.id.lv_comments);
-        adapter = new CommentListAdapter(this, new ArrayList<Comment>());//.comments);
+        adapter = new CommentListAdapter(this, mFish.comments);
         lv_comments.setAdapter(adapter);
         bt_add_comment = (Button) findViewById(R.id.bt_add_comment);
         bt_add_comment.setOnClickListener(new OnClickListener() {

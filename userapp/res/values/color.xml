@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="github">#337ab7</color>
+    <color name="github_pressed">#286090</color>
+    <color name="google">#d9534f</color>
+    <color name="google_pressed">#c9302c</color>
+    <color name="facebook">#556666</color>
+    <color name="facebook_pressed">#3e4a4a</color>
+    <color name="background">#252833</color>
+
+</resources>

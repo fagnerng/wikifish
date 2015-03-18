@@ -3,6 +3,7 @@ package com.wikifish;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -12,7 +13,8 @@ public class DialogHelp extends Dialog {
 
     public DialogHelp(final Context context) {
         super(context);
-        setTitle(R.string.app_name);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); 
+        setTitle("");
         setContentView(R.layout.dialog_help);
         setCanceledOnTouchOutside(true);
         final BaseAdapter adapter = new HelpListAdapter(context);

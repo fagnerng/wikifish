@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" 
-    android:background="@color/background">
+  	android:theme="@android:style/Theme.Black.NoTitleBar"
+    android:background="@android:color/transparent">
 
     <ImageView
         android:id="@+id/iv_zoom"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:contentDescription="@string/app_name"
-        android:background="@drawable/default_fish" />
+        android:src="@drawable/default_fish" />
 
 </LinearLayout>

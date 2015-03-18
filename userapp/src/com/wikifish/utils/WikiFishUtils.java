@@ -35,7 +35,8 @@ public final class WikiFishUtils {
     /**
      * The Constant mFormat.
      */
-    private static final String FORMAT_SHORT = "HH:mm";
+    @SuppressWarnings("unused")
+	private static final String FORMAT_SHORT = "HH:mm";
     private static final String FORMAT_LONG = "HH:mm dd/MM/YYYY";
 
     public static void showToast(final Context context, final String message) {

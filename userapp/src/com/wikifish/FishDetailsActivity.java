@@ -1,8 +1,6 @@
 
 package com.wikifish;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -15,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wikifish.adapter.CommentListAdapter;
-import com.wikifish.entity.Comment;
 import com.wikifish.entity.Fish;
 import com.wikifish.image.ImageHandlingTask;
 
@@ -28,7 +25,6 @@ public class FishDetailsActivity extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);  
         setContentView(R.layout.activity_fish_details);
         mFish = (Fish) getIntent().getSerializableExtra(Fish.KEY);
         if (mFish != null) {
@@ -50,7 +46,8 @@ public class FishDetailsActivity extends Activity {
 
             @Override
             public void onClick(final View v) {
-                new DialogImageZoom(FishDetailsActivity.this, iv_fish.getDrawable()).show();
+                 DialogImageZoom mDialog = new DialogImageZoom(FishDetailsActivity.this, iv_fish.getDrawable());
+                 mDialog.show();
 
             }
         });
@@ -65,7 +62,6 @@ public class FishDetailsActivity extends Activity {
     private void setHelpButton() {
         final ImageView iv_help = (ImageView) findViewById(R.id.iv_help);
         final Dialog mDialog = new DialogHelp(this);
-
         iv_help.setOnClickListener(new OnClickListener() {
 
             @Override

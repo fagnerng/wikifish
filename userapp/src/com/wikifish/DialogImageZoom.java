@@ -1,25 +1,27 @@
 
 package com.wikifish;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.view.Window;
 import android.widget.ImageView;
 
-@SuppressLint("NewApi") public class DialogImageZoom extends Dialog {
+public class DialogImageZoom extends Dialog {
 
     public DialogImageZoom(final Context context) {
         super(context);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); 
+        setTitle("");
         setContentView(R.layout.image_zoom);
-        setTitle(context.getResources().getString(R.string.title_image_preview));
 
     }
 
     public DialogImageZoom(final Context context, final Drawable image) {
         super(context);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); 
+        setTitle("");
         setContentView(R.layout.image_zoom);
-        setTitle(context.getResources().getString(R.string.title_image_preview));
-        ((ImageView) findViewById(R.id.iv_zoom)).setBackground(image);
+        ((ImageView) findViewById(R.id.iv_zoom)).setImageDrawable(image);
     }
 }

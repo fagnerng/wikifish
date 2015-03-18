@@ -43,42 +43,42 @@
 
     <string-array name="description_feeding_habits">
         <item>Dry, packaged food.</item>
-        <item>Live worms, Daphnia, etc.</item>
-        <item>Live fish.</item>
-        <item>Vegetarian.</item>
+        <item>Alimentos vivos como, besouro de amendoim, Live worms, Daphnia, etc.</item>
+        <item>Peixe vivos.</item>
+        <item>Vegetariano.</item>
     </string-array>
     <string-array name="description_reproduction">
-        <item>Egglayer.</item>
-        <item>Livebearer.</item>
-        <item>Mouthbrooder.</item>
+        <item>Ovíparo.</item>
+        <item>Vivíparo.</item>
+        <item>Carrega os ovos na boca.</item>
     </string-array>
     <string-array name="description_aquarium_lighting">
-        <item>Bright with occ /-falta algo aqui-/.</item>
-        <item>Bright, no sunlight.</item>
-        <item>As dark as possible as long as fisher are visible.</item>
+        <item>Bem iluminado e com luz do natural ocasionalmente.</item>
+        <item>Bem iluminado sem luz natural.</item>
+        <item>O mais escuro possivel, o mínimo para que o peixe fique visivel.</item>
     </string-array>
     <string-array name="description_temperament">
-        <item>Peacefull community fish.</item>
-        <item>Not recommended for begginer.</item>
+        <item>Pacífico.</item>
+        <item>Não Recomendado para iniciantes.</item>
     </string-array>
     <string-array name="description_aquarium_setup">
-        <item>Densely planted aquarium.</item>
-        <item>Rocks; no plants.</item>
-        <item>Only gravel on bottom</item>
-        <item>Rock, plants and driftwood</item>
+        <item>Densamente plantado.</item>
+        <item>Apenas rochas, sem plantas.</item>
+        <item>Apenas substrato no fundo do aquário.</item>
+        <item>Completo, plantas, rochas, troncos, etc.</item>
     </string-array>
     <string-array name="description_swimming_habits">
-        <item>Botton swimmer.</item>
-        <item>No special swimming level.</item>
-        <item>Top Swimmer.</item>
-        <item>Swims in middle of water.</item>
+        <item>Peixe que nada no fundo do Aquário.</item>
+        <item>Peixe que nada em qualquer Parte do Aquário.</item>
+        <item>Peixe que nada na superfície do Aquário.</item>
+        <item>Peixe que nada em altura média do Aquário.</item>
     </string-array>
     <string-array name="description_other">
-        <item>Relative acidity/alkalinity of water. Above 7.0 is alakaline. Bellow 7.0 is acidic.</item>
-        <item>Hardness of water according to German scale. The lower the number, the softer the water.</item>
-        <item>Temperature in degrees Centigrade.</item>
-        <item>Maximum lenght to which the fish grows (in centimeters).</item>
-        <item>Capacity (in liters) of smallest aquarium in which fish may be kept.</item>
+        <item>Relativo a acidez/Alcalinidade da água. Acima de 7.0 é alcalino abaixo é ácido.</item>
+        <item>Dureza da água de acordo com a escala Alemã. Quanto menor o valor, mais mole a água será.</item>
+        <item>Temperatura em grau centígrado.</item>
+        <item>Valor máximo em tamanho que o peixe atinge em centímetro.</item>
+        <item>Capacitade em litros que o menor aquário deve ter para possuir tal espécie.</item>
     </string-array>
     <!-- \\Helpe Strings -->
 

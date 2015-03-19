@@ -29,7 +29,7 @@ public final class WikiFishUtils {
     private WikiFishUtils() {
     }
 
-    private static final String URL = "http://wikifish.herokuapp.com/";
+    private static final String URL = "http://wikifish-site.herokuapp.com";
     // private static final String URL = "http://192.168.1.244:5000/api/ti";
 
     /**

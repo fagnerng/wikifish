@@ -20,10 +20,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wikifish.entity.Fish;
+import com.wikifish.utils.WikiFishUtils;
 
 public class FishHelper {
-	private static final String TAG = "ArticleHelper";
-	public static void loadArticles(String token, FishHelper.Callback callback) {
+	private static final String TAG = "FishHelper";
+	public static void loadFishes(String token, FishHelper.Callback callback) {
 		new FishAsyncTask().execute(token, callback);
 	}
 	
@@ -56,8 +57,7 @@ public class FishHelper {
 	
 	private static String getData(String token) {
 		HttpClient httpclient = new DefaultHttpClient();
-		//HttpContext ctx = new BasicHttpContext();
-		HttpGet httpget = new HttpGet("http://wikifish.herokuapp.com/fish");
+		HttpGet httpget = new HttpGet(WikiFishUtils.getServerURL() + "/api/fish");
 		
 		try {
 			httpget.addHeader("Cookie", "ua_session_token=" + token + ";");

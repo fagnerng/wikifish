@@ -32,7 +32,7 @@ public class MainFragment extends Fragment {
 		    public void call(Boolean authenticated, Exception exception) {
 		        if (authenticated) {
 		        	Toast.makeText(getActivity(), "Logado com : "+ session.user.email, Toast.LENGTH_SHORT).show();
-		        	FishHelper.loadArticles(session.token, new FishHelper.Callback() {
+		        	FishHelper.loadFishes(session.token, new FishHelper.Callback() {
 					    @Override
 					    public void call(List<Fish> fishs) {
 					        // Print articles

@@ -16,7 +16,7 @@
     <!-- User Strings // -->
     <string name="hint_email">Email</string>
     <string name="hint_password">*****</string>
-    <string name="hint_name">Name</string>
+    <string name="hint_name">Nome</string>
     <string name="bt_register">Register</string>
     <string name="bt_login">Login</string>
     <string name="bt_cancel">Cancel</string>
@@ -32,7 +32,7 @@
     <string name="title_help_temperament">Temperamento</string>
     <string name="title_help_aquarium_setup">Configuração do aquario</string>
     <string name="title_help_swimming_habits">Habitos de nado</string>
-    <string name="title_help_other">Outross</string>
+    <string name="title_help_other">Outros</string>
 
     <!-- Connection Infos -->
     <string name="cant_without_connection">Impossivel sem conexão.</string>
@@ -79,11 +79,8 @@
     </string-array>
     <!-- \\Helpe Strings -->
 
-    <string name="title_activity_list_all">ListAllActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="is_empty">Is Empty</string>
-    <string name="fish_name_default">Name of fish</string>
-    <string name="title_activity_teste">Teste</string>
+    <string name="is_empty">Vazio</string>
+    <string name="fish_name_default">Name do peixe</string>
     <string name="login_progress_signing_in">Carregando</string>
     <string name="login_google">Entrar com Google+</string>
     <string name="login_github">Entrar com o GitHub</string>

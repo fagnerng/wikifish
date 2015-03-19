@@ -1,39 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Wikifish</string>
-    <string name="action_settings">Configurações</string>
-    <string name="action_logout">Deslogar</string>
-    <string name="hello_world">Bem Vindo!</string>
-    <string name="login_progress_signing_in">Entrando&#8230;</string>
-    <string name="signup_progress_signing_up">Registrando&#8230;</string>
-    <string name="title_activity_main_fragment">Bem Vindo!</string>
-    <string name="error_field_required">Campo Obrigatório</string>
-    <string name="login">Entrar</string>
-    <string name="signup">Registrar</string>
-    <string name="email">Email</string>
-    <string name="username">Login(username)</string>
-    <string name="password">Senha</string>
-	<string name="login_facebook">Entrar com Facebook</string>
-	<string name="login_google">Entrar com Google</string>
-	<string name="login_github">Entrar com Github</string>
-	
-	<string name="facebook_signup">Sign Up with Facebook</string>
-	<string name="word_or">Ou</string>
-	
-
-    <string name="title_activity_about">Help</string>
-    <string name="title_name">Name:</string>
-    <string name="title_price">Price:</string>
-    <string name="comment_new">Comment New</string>
-    <string name="title_scientific_name">Scientific:</string>
-    <string name="action_setting">Settings</string>
+    <string name="app_name">WikiFish</string>
+    <string name="title_activity_about">Ajuda</string>
+    <string name="title_name">Nome:</string>
+    <string name="title_price">Preço:</string>
+    <string name="comment_new">novo comentario</string>
+    <string name="title_scientific_name">Cientifico:</string>
+    <string name="action_setting">Configuraçãos</string>
     <string name="colon">:</string>
-    <string name="add_comment">Add comment</string>
-    <string name="hint_comment">Put your comment here</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="button_search">Search</string>
-    <string name="button_clear">Clear</string>
+    <string name="add_comment">Comentar</string>
+    <string name="hint_comment">digite seu comentario</string>
+    <string name="button_search">Pesquisar</string>
+    <string name="button_clear">Limpar</string>
     <!-- User Strings // -->
     <string name="hint_email">Email</string>
     <string name="hint_password">*****</string>
@@ -43,17 +22,17 @@
     <string name="bt_cancel">Cancel</string>
     <string name="title_create">Create User</string>
     <string name="action_search">Search</string>
-    <string name="title_image_preview">Image Preview</string>
+    <string name="action_logout">Logout</string>
 
     <!-- \\User Strings -->
     <!-- Helpe Strings// -->
-    <string name="title_help_feeding_habits">Feeding Habits</string>
-    <string name="title_help_reproduction">Reproduction</string>
-    <string name="title_help_aquarium_lighting">Aquarium lighting</string>
-    <string name="title_help_temperament">Temperament</string>
-    <string name="title_help_aquarium_setup">Aquarium Set-Up</string>
-    <string name="title_help_swimming_habits">Swimming Habits</string>
-    <string name="title_help_other">Other</string>
+    <string name="title_help_feeding_habits">Habitos alimentares</string>
+    <string name="title_help_reproduction">Reprodução</string>
+    <string name="title_help_aquarium_lighting">Iluminação do Aquario</string>
+    <string name="title_help_temperament">Temperamento</string>
+    <string name="title_help_aquarium_setup">Configuração do aquario</string>
+    <string name="title_help_swimming_habits">Habitos de nado</string>
+    <string name="title_help_other">Outross</string>
 
     <!-- Connection Infos -->
     <string name="cant_without_connection">Impossivel sem conexão.</string>
@@ -61,50 +40,60 @@
 
     <string-array name="description_feeding_habits">
         <item>Dry, packaged food.</item>
-        <item>Live worms, Daphnia, etc.</item>
-        <item>Live fish.</item>
-        <item>Vegetarian.</item>
+        <item>Alimentos vivos como, besouro de amendoim, Live worms, Daphnia, etc.</item>
+        <item>Peixe vivos.</item>
+        <item>Vegetariano.</item>
     </string-array>
     <string-array name="description_reproduction">
-        <item>Egglayer.</item>
-        <item>Livebearer.</item>
-        <item>Mouthbrooder.</item>
+        <item>Ovíparo.</item>
+        <item>Vivíparo.</item>
+        <item>Carrega os ovos na boca.</item>
     </string-array>
     <string-array name="description_aquarium_lighting">
-        <item>Bright with occ /-falta algo aqui-/.</item>
-        <item>Bright, no sunlight.</item>
-        <item>As dark as possible as long as fisher are visible.</item>
+        <item>Bem iluminado e com luz do natural ocasionalmente.</item>
+        <item>Bem iluminado sem luz natural.</item>
+        <item>O mais escuro possivel, o mínimo para que o peixe fique visivel.</item>
     </string-array>
     <string-array name="description_temperament">
-        <item>Peacefull community fish.</item>
-        <item>Not recommended for begginer.</item>
+        <item>Pacífico.</item>
+        <item>Não Recomendado para iniciantes.</item>
     </string-array>
     <string-array name="description_aquarium_setup">
-        <item>Densely planted aquarium.</item>
-        <item>Rocks; no plants.</item>
-        <item>Only gravel on bottom</item>
-        <item>Rock, plants and driftwood</item>
+        <item>Densamente plantado.</item>
+        <item>Apenas rochas, sem plantas.</item>
+        <item>Apenas substrato no fundo do aquário.</item>
+        <item>Completo, plantas, rochas, troncos, etc.</item>
     </string-array>
     <string-array name="description_swimming_habits">
-        <item>Botton swimmer.</item>
-        <item>No special swimming level.</item>
-        <item>Top Swimmer.</item>
-        <item>Swims in middle of water.</item>
+        <item>Peixe que nada no fundo do Aquário.</item>
+        <item>Peixe que nada em qualquer Parte do Aquário.</item>
+        <item>Peixe que nada na superfície do Aquário.</item>
+        <item>Peixe que nada em altura média do Aquário.</item>
     </string-array>
     <string-array name="description_other">
-        <item>Relative acidity/alkalinity of water. Above 7.0 is alakaline. Bellow 7.0 is acidic.</item>
-        <item>Hardness of water according to German scale. The lower the number, the softer the water.</item>
-        <item>Temperature in degrees Centigrade.</item>
-        <item>Maximum lenght to which the fish grows (in centimeters).</item>
-        <item>Capacity (in liters) of smallest aquarium in which fish may be kept.</item>
+        <item>Relativo a acidez/Alcalinidade da água. Acima de 7.0 é alcalino abaixo é ácido.</item>
+        <item>Dureza da água de acordo com a escala Alemã. Quanto menor o valor, mais mole a água será.</item>
+        <item>Temperatura em grau centígrado.</item>
+        <item>Valor máximo em tamanho que o peixe atinge em centímetro.</item>
+        <item>Capacitade em litros que o menor aquário deve ter para possuir tal espécie.</item>
     </string-array>
     <!-- \\Helpe Strings -->
 
     <string name="title_activity_list_all">ListAllActivity</string>
+    <string name="hello_world">Hello world!</string>
     <string name="is_empty">Is Empty</string>
     <string name="fish_name_default">Name of fish</string>
     <string name="title_activity_teste">Teste</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="login_progress_signing_in">Carregando</string>
+    <string name="login_google">Entrar com Google+</string>
+    <string name="login_github">Entrar com o GitHub</string>
+    <string name="login_facebook">Entrar Com o Facebook</string>
+    <string name="word_or">ou</string>
+    <string name="username">Usuario</string>
+    <string name="password">Senha</string>
+    <string name="login">Entrar</string>
+    <string name="signup">Registrar</string>
+    <string name="signup_progress_signing_up">Entrando</string>
+    <string name="email">Email</string>
 
-    
 </resources>

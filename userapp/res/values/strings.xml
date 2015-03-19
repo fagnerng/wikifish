@@ -5,7 +5,8 @@
     <string name="title_activity_about">Ajuda</string>
     <string name="title_name">Nome:</string>
     <string name="title_price">Preço:</string>
-    <string name="comment_new">novo comentario</string>
+    <string name="comment_new">Comentar</string>
+    <string name="cancel">Cancelar</string>
     <string name="title_scientific_name">Cientifico:</string>
     <string name="action_setting">Configuraçãos</string>
     <string name="colon">:</string>

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
+import com.wikifish.MainActivity;
 
 public class Comment implements Comparable<Comment>, Serializable{
 	/**
@@ -23,12 +24,13 @@ public class Comment implements Comparable<Comment>, Serializable{
 	
 	public void like(){
 		//TODO fazer o post aqui
-		commentLikes.add("");
+		
+			commentLikes.add(MainActivity.session.user.email);
 	}
 	
 	@Override
 	public int compareTo(Comment another) {
 		// TODO Auto-generated method stub
-		return commentLikes.size()-(another.commentLikes.size());
+		return another.commentLikes.size() -commentLikes.size();
 	}
 }

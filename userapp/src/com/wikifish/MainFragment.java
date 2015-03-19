@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.wikifish.adapter.ListAllAdapter;
 import com.wikifish.entity.Fish;
@@ -31,7 +30,7 @@ public class MainFragment extends Fragment {
 		    @Override
 		    public void call(Boolean authenticated, Exception exception) {
 		        if (authenticated) {
-		        	Toast.makeText(getActivity(), "Logado com : "+ session.user.email, Toast.LENGTH_SHORT).show();
+		        	//Toast.makeText(getActivity(), "Logado com : "+ session.user.email, Toast.LENGTH_SHORT).show();
 		        	FishHelper.loadFishes(session.token, new FishHelper.Callback() {
 					    @Override
 					    public void call(List<Fish> fishs) {

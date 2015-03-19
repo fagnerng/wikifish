@@ -8,6 +8,7 @@
     <color name="facebook">#556666</color>
     <color name="facebook_pressed">#3e4a4a</color>
     <color name="background">#252833</color>
-    <color name="backgroundGreen">#250033</color>
+    <color name="backgroundLikeGreen">#529259</color>
+    <color name="backgroundLike">#3e4a4a</color>
 
 </resources>

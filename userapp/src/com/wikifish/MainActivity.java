@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends FragmentActivity {
 	// Instances for session and its UI helper
-	UserApp.Session session;
+	public UserApp.Session session;
 	UserApp.UIHelper uiHelper;
 	
 	@Override

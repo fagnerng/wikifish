@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.wikifish.MainActivity;
 import com.wikifish.R;
 import com.wikifish.entity.Comment;
 
@@ -50,7 +51,7 @@ public class CommentListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(final int arg0) {
-        return comments.get(arg0).id;
+        return comments.get(arg0).id.hashCode();
     }
 
     @Override

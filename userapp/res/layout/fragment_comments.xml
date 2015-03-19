@@ -35,18 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right" >
 
-        <TextView
-            android:id="@+id/tv_number_of_likes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageButton
-            android:id="@+id/ib_like"
+        <Button
+            android:id="@+id/bt_number_of_likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
-            android:background="@android:color/transparent"
-            android:src="@drawable/like" />
+             />
     </TableRow>
 
 </LinearLayout>

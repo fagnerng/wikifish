@@ -1,6 +1,9 @@
 
 package com.wikifish.image;
 
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -11,14 +14,10 @@ import android.widget.ImageView;
 import com.wikifish.R;
 import com.wikifish.persistence.cache.CacheUtil;
 import com.wikifish.persistence.cache.MemoryCache;
-import com.wikifish.utils.Logger;
-
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
 
 public class ImageHandlingTask extends AsyncTask<String, Void, Bitmap> {
 
-    private final Logger mLogger = new Logger(getClass().getName());
+   // private final Logger mLogger = new Logger(getClass().getName());
 
     private final WeakReference<ImageView> imageViewReference;
     private final Context mContext;
@@ -40,27 +39,27 @@ public class ImageHandlingTask extends AsyncTask<String, Void, Bitmap> {
         mUrl = params[0];
 
         if (mUrl != null && !TextUtils.isEmpty(mUrl)) {
-            mLogger.debug(mUrl);
+           // mLogger.debug(mUrl);
             // First, check if it's available in memory cache
             bitmap = MemoryCache.getInstance().getBitmapFromMemCache(mUrl);
 
             if (bitmap == null) {
-                mLogger.debug("bitmap null0");
+               // mLogger.debug("bitmap null0");
                 // Check against file system cache
                 if (CacheUtil.hasCachedFile(mUrl, mContext) != null) {
-                    mLogger.debug("Cache not null");
+                    //mLogger.debug("Cache not null");
                     final InputStream cachedFile = CacheUtil.getCachedFile(mUrl, mContext);
                     bitmap = CacheUtil.decodeImage(cachedFile, mWidth, mHeight);
                 }
 
                 // not in cache, download
                 if (bitmap == null) {
-                    mLogger.debug("bitmap null1");
+                   // mLogger.debug("bitmap null1");
                     final ImageDownloader manager = new ImageDownloader(mUrl);
                     bitmap = manager.downloadBitmap();
 
                     if (bitmap != null) {
-                        mLogger.debug("bitmap not null");
+                       // mLogger.debug("bitmap not null");
                         // add it to caches
                         MemoryCache.getInstance().addBitmapToMemoryCache(mUrl, bitmap);
                         CacheUtil.createCachedBitmapFile(mUrl, bitmap, mContext);

@@ -14,10 +14,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.wikifish.MainActivity;
 import com.wikifish.R;
 import com.wikifish.entity.Comment;
 
@@ -35,12 +35,13 @@ public class CommentListAdapter extends BaseAdapter {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
         this.comments = comments2;
-
+        
         Collections.sort(comments2);
     }
 
     @Override
     public int getCount() {
+    	if(comments == null) return 0;
         return comments.size();
     }
 
@@ -59,22 +60,25 @@ public class CommentListAdapter extends BaseAdapter {
         final View view = mLayoutInflater.inflate(R.layout.fragment_comments, null);
         final TextView tvOwner = (TextView) view.findViewById(R.id.tv_owner);
         final TextView tvComment = (TextView) view.findViewById(R.id.tv_comment);
-        final TextView numberOflikes = (TextView) view
-                .findViewById(R.id.tv_number_of_likes);
+        final Button numberOflikes = (Button) view
+                .findViewById(R.id.bt_number_of_likes);
         final Comment comment = comments.get(position);
-        tvOwner.setText(comment.owner.email);
+        tvOwner.setText(comment.owner);
         tvComment.setText(comment.comment);
 
-        numberOflikes.setText(comment.id + "");
-
-        ImageButton like;
-        like = (ImageButton) view.findViewById(R.id.ib_like);
-        like.setOnClickListener(new OnClickListener() {
+        numberOflikes.setText(comment.commentLikes.size() + "");
+        if(comment.commentLikes.size()>1){
+        	numberOflikes.setBackgroundResource(R.color.backgroundGreen);
+        }
+        numberOflikes.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				comment.like();
-				
+				numberOflikes.setText(comment.commentLikes.size() + "");
+		        if(comment.commentLikes.size()>1){
+		        	numberOflikes.setBackgroundResource(R.color.backgroundGreen);	
+		        }
 			}
 		});
         

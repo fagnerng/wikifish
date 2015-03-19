@@ -1,21 +1,20 @@
 
 package com.wikifish.image;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.wikifish.network.HttpClientConnection;
-import com.wikifish.utils.Logger;
+import java.io.InputStream;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 
-import java.io.InputStream;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.wikifish.network.HttpClientConnection;
 
 public class ImageDownloader {
 
-    private final Logger mLogger = new Logger(getClass().getName());
+   // private final Logger mLogger = new Logger(getClass().getName());
 
     private final HttpClientConnection mNetworkConn;
 
@@ -51,7 +50,7 @@ public class ImageDownloader {
                 }
             }
         } catch (final Exception e) {
-            mLogger.error(e.getMessage());
+           // mLogger.error(e.getMessage());
         }
 
         return bitmap;

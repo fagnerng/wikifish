@@ -1,7 +1,7 @@
 package com.wikifish.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -17,9 +17,9 @@ public class Comment implements Comparable<Comment>, Serializable{
 	@SerializedName("parent")
 	public String parent;;
 	@SerializedName("user")
-	public User owner;
+	public String owner;
 	@SerializedName("likes")
-	public ArrayList<String> commentLikes;
+	public List<String> commentLikes;
 	
 	public void like(){
 		//TODO fazer o post aqui
@@ -29,6 +29,6 @@ public class Comment implements Comparable<Comment>, Serializable{
 	@Override
 	public int compareTo(Comment another) {
 		// TODO Auto-generated method stub
-		return id.compareTo(another.id);
+		return commentLikes.size()-(another.commentLikes.size());
 	}
 }

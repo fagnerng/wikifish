@@ -55,11 +55,10 @@ public class Fish implements Serializable {
 	@SerializedName("swimming")
 	public String swimming;
 	
-	@SerializedName("urlPicture")
+	@SerializedName("url_picture")
 	public String urlPicture;
 	
-	@SerializedName("comments")
-	public ArrayList<Comment> comments;
+	public ArrayList<Comment> comments = new ArrayList<Comment>();
 
 	public void addComment(Comment comment){
 		comments.add(comment);

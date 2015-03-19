@@ -1,23 +1,26 @@
 
 package com.wikifish;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wikifish.adapter.CommentListAdapter;
+import com.wikifish.entity.Comment;
 import com.wikifish.entity.Fish;
 import com.wikifish.image.ImageHandlingTask;
 
 public class FishDetailsActivity extends Activity {
-
+	
     CommentListAdapter adapter;
     Button bt_add_comment;
     private Fish mFish;
@@ -27,7 +30,7 @@ public class FishDetailsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish_details);
         mFish = (Fish) getIntent().getSerializableExtra(Fish.KEY);
-        if (mFish != null) {
+        if (mFish != null && MainActivity.session != null) {
             init();
         }
     }
@@ -39,7 +42,8 @@ public class FishDetailsActivity extends Activity {
         setPicture();
 
     }
-
+    
+    
     private void setPicture() {
         final ImageView iv_fish = (ImageView) findViewById(R.id.iv_picture_fish);
         iv_fish.setOnClickListener(new OnClickListener() {
@@ -73,19 +77,43 @@ public class FishDetailsActivity extends Activity {
     }
 
     private void setComments() {
-        final ListView lv_comments = (ListView) findViewById(R.id.lv_comments);
-        adapter = new CommentListAdapter(this, mFish.comments);
-        lv_comments.setAdapter(adapter);
-        bt_add_comment = (Button) findViewById(R.id.bt_add_comment);
-        bt_add_comment.setOnClickListener(new OnClickListener() {
+    	System.out.println(MainActivity.session.token);
+    	System.out.println(mFish.id);
+    	
+    	
+    	CommentHelper.loadComments(MainActivity.session.token, new CommentHelper.Callback() {
+			
+			@Override
+			public void call(List<Comment> comments) {
+				mFish.comments = new ArrayList<Comment>();
+				mFish.comments.addAll(comments);
+					
+		        final ListView lv_comments = (ListView) findViewById(R.id.lv_comments);
+		        adapter = new CommentListAdapter(FishDetailsActivity.this, mFish.comments);
+		        lv_comments.setAdapter(adapter);
+		        bt_add_comment = (Button) findViewById(R.id.bt_add_comment);
+		        bt_add_comment.setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick(final View v) {
-                // TODO adiciona um novo comentario
+		            @Override
+		            public void onClick(final View v) {
+		                // TODO adiciona um novo comentario
 
-            }
+		            }
 
-        });
+		        });
+			}
+		}, mFish.id);
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+
     }
 
     private void setTextInfo() {
